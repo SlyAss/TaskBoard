@@ -32,8 +32,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="TaskBoard.Common">
+      <HintPath>..\..\TaskBoard.Common\TaskBoard.Common\bin\Release\TaskBoard.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\BaseHttpClient.cs" />
+    <Compile Include="Clients\ParameretsClient.cs" />
+    <Compile Include="HttpClientParameters.cs" />
+    <Compile Include="HttpClientProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
