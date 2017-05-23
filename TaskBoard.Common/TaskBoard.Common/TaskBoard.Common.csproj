@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationFile.cs" />
+    <Compile Include="Database\IDatabaseAuthorizer.cs" />
     <Compile Include="Extensions\BytesExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Serializers\JsonSerializer.cs" />
     <Compile Include="Serializers\XmlSerializer.cs" />
     <Compile Include="Tables\Attributes\HeaderColumnAttribute.cs" />
+    <Compile Include="Tables\Enums\AccessType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
