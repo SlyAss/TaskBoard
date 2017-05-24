@@ -2,7 +2,7 @@
 using System.Linq;
 
 namespace TaskBoard.Server.Database.Models {
-	public class DatabaseEditor {
+	public abstract class DatabaseEditor {
 		protected readonly ModelDatabase ModelDatabase;
 
 		protected DatabaseEditor(ModelDatabase modelDatabase) {
