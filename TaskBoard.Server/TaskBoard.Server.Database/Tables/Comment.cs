@@ -13,13 +13,13 @@ namespace TaskBoard.Server.Database.Tables {
 		public DateTime CreateDateTime { get; set; }
 
 		[Required]
-		public int UserId { get; set; }
+		public Guid UserId { get; set; }
 
 		[Required]
 		public virtual User User { get; set; }
 
 		[Required]
-		public int TaskId { get; set; }
+		public Guid TaskId { get; set; }
 
 		[Required]
 		public virtual Task Task { get; set; }

@@ -23,27 +23,27 @@ namespace TaskBoard.Server.Database.Tables {
 		public Priority Priority { get; set; }
 
 		[Required]
-		public int DeveloperId { get; set; }
+		public Guid DeveloperId { get; set; }
 
 		[Required]
-		public User Developer { get; set; }
+		public virtual User Developer { get; set; }
 
 		[Required]
-		public int ReviewerId { get; set; }
+		public Guid ReviewerId { get; set; }
 
 		[Required]
-		public User Reviewer { get; set; }
+		public virtual User Reviewer { get; set; }
 
 		[Required]
-		public int ColumnId { get; set; }
+		public Guid ColumnId { get; set; }
 
 		[Required]
-		public Column Column { get; set; }
+		public virtual Column Column { get; set; }
 
 		[Required]
-		public int BoardId { get; set; }
+		public Guid BoardId { get; set; }
 
 		[Required]
-		public Board Board { get; set; }
+		public virtual Board Board { get; set; }
 	}
 }

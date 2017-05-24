@@ -39,7 +39,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationFile.cs" />
+    <Compile Include="Database\Editors\IDatabaseBoardEditor.cs" />
+    <Compile Include="Database\Editors\IDatabaseColumnEditor.cs" />
+    <Compile Include="Database\Editors\IDatabaseCommentEditor.cs" />
+    <Compile Include="Database\Editors\IDatabaseTaskEditor.cs" />
+    <Compile Include="Database\Editors\IDatabaseUserEditor.cs" />
     <Compile Include="Database\IDatabaseAuthorizer.cs" />
+    <Compile Include="Database\IDatabaseEditor.cs" />
+    <Compile Include="Database\IDatabaseReader.cs" />
+    <Compile Include="Database\Readers\IDatabaseBoardReader.cs" />
+    <Compile Include="Database\Readers\IDatabaseColumnReader.cs" />
+    <Compile Include="Database\Readers\IDatabaseCommentReader.cs" />
+    <Compile Include="Database\Readers\IDatabaseTaskReader.cs" />
+    <Compile Include="Database\Readers\IDatabaseUserReader.cs" />
     <Compile Include="Extensions\BytesExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
@@ -52,12 +64,14 @@
     <Compile Include="Tables\Enums\AccessType.cs" />
     <Compile Include="Tables\Enums\Priority.cs" />
     <Compile Include="Tables\Enums\State.cs" />
+    <Compile Include="Tables\Proxies\BoardProxy.cs" />
+    <Compile Include="Tables\Proxies\ColumnProxy.cs" />
+    <Compile Include="Tables\Proxies\CommentProxy.cs" />
+    <Compile Include="Tables\Proxies\TaskProxy.cs" />
+    <Compile Include="Tables\Proxies\UserProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tables\Proxies\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,9 +11,9 @@ namespace TaskBoard.Server.Database.Tables {
 		public string Header { get; set; }
 
 		[Required, Index("IX_ColumnUniques", 2, IsUnique = true)]
-		public int BoardId { get; set; }
+		public Guid BoardId { get; set; }
 
 		[Required]
-		public Board Board { get; set; }
+		public virtual Board Board { get; set; }
 	}
 }
