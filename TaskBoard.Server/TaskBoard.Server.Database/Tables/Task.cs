@@ -5,7 +5,7 @@ using TaskBoard.Common.Tables.Enums;
 namespace TaskBoard.Server.Database.Tables {
 	public class Task {
 		[Key]
-		public Guid Taskid { get; set; }
+		public Guid TaskId { get; set; }
 
 		[Required]
 		public string Header { get; set; }
@@ -23,21 +23,18 @@ namespace TaskBoard.Server.Database.Tables {
 		public Priority Priority { get; set; }
 
 		[Required]
-		public Guid DeveloperId { get; set; }
+		public DateTime CreateDateTime { get; set; }
 
-		[Required]
+		public Guid? DeveloperId { get; set; }
+
 		public virtual User Developer { get; set; }
 
-		[Required]
-		public Guid ReviewerId { get; set; }
+		public Guid? ReviewerId { get; set; }
 
-		[Required]
 		public virtual User Reviewer { get; set; }
 
-		[Required]
-		public Guid ColumnId { get; set; }
+		public Guid? ColumnId { get; set; }
 
-		[Required]
 		public virtual Column Column { get; set; }
 
 		[Required]

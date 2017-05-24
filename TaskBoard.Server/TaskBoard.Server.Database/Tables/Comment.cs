@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace TaskBoard.Server.Database.Tables {
 	public class Comment {
 		[Key]
-		public Guid Commentid { get; set; }
+		public Guid CommentId { get; set; }
 
 		[Required]
 		public string Content { get; set; }

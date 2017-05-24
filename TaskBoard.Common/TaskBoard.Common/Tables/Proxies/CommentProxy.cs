@@ -4,7 +4,7 @@ using TaskBoard.Common.Tables.Attributes;
 namespace TaskBoard.Common.Tables.Proxies {
 	public class CommentProxy {
 		[HeaderColumn("Id комментария")]
-		public Guid Commentid { get; set; }
+		public Guid CommentId { get; set; }
 
 		[HeaderColumn("Содержание")]
 		public string Content { get; set; }

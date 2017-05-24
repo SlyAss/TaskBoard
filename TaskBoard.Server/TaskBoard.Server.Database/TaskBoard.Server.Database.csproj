@@ -50,6 +50,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\BoardExtensions.cs" />
+    <Compile Include="Extensions\ColumnExtensions.cs" />
+    <Compile Include="Extensions\CommentExtensions.cs" />
+    <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="Models\DatabaseEditor.cs" />
+    <Compile Include="Models\Editors\DatabaseBoardEditor.cs" />
+    <Compile Include="Models\Editors\DatabaseColumnEditor.cs" />
+    <Compile Include="Models\Editors\DatabaseCommentEditor.cs" />
+    <Compile Include="Models\Editors\DatabaseTaskEditor.cs" />
+    <Compile Include="Models\Editors\DatabaseUserEditor.cs" />
     <Compile Include="Models\ModelDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Board.cs" />
@@ -61,6 +72,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Readers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

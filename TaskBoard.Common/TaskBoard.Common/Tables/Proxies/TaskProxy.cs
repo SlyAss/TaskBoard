@@ -5,7 +5,7 @@ using TaskBoard.Common.Tables.Enums;
 namespace TaskBoard.Common.Tables.Proxies {
 	public class TaskProxy {
 		[HeaderColumn("Id задачи")]
-		public Guid Taskid { get; set; }
+		public Guid TaskId { get; set; }
 
 		[HeaderColumn("Заголовок")]
 		public string Header { get; set; }
@@ -22,14 +22,17 @@ namespace TaskBoard.Common.Tables.Proxies {
 		[HeaderColumn("Приоритет")]
 		public Priority Priority { get; set; }
 
+		[HeaderColumn("Дата создания")]
+		public DateTime CreateDateTime { get; set; }
+
 		[HeaderColumn("Id разработчика")]
-		public Guid DeveloperId { get; set; }
+		public Guid? DeveloperId { get; set; }
 
 		[HeaderColumn("Id ревьювера")]
-		public Guid ReviewerId { get; set; }
+		public Guid? ReviewerId { get; set; }
 
 		[HeaderColumn("Id столбца")]
-		public Guid ColumnId { get; set; }
+		public Guid? ColumnId { get; set; }
 
 		[HeaderColumn("Id доски")]
 		public Guid BoardId { get; set; }
