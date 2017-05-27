@@ -1,4 +1,5 @@
-﻿using TaskBoard.Common.Database;
+﻿using System;
+using TaskBoard.Common.Database;
 using TaskBoard.Common.Database.Readers;
 using TaskBoard.Common.Enums;
 using TaskBoard.Common.Extensions;
@@ -17,9 +18,7 @@ namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.TaskReads {
 		}
 
 		protected override Task[] Run(NameValues parameters, byte[] requestBody) {
-			var boardId = parameters[HttpParameters.TaskBoardId].ToGuid();
-
-			return databaseTaskReader.GetFromBoard(boardId);
+			return databaseTaskReader.GetFromBoard(parameters[HttpParameters.TaskBoardId].ToGuid());
 		}
 	}
 }

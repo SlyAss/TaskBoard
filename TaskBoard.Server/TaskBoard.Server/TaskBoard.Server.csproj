@@ -84,6 +84,7 @@
     <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetAllBoardsFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetBoardsWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetAllColumnsFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetColumnsFromBoardFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetColumnsWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetCommentsFromTaskFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetAllCommentsFunction.cs" />

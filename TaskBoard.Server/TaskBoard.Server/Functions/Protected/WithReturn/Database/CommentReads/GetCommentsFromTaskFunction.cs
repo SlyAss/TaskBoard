@@ -1,4 +1,5 @@
-﻿using TaskBoard.Common.Database;
+﻿using System;
+using TaskBoard.Common.Database;
 using TaskBoard.Common.Database.Readers;
 using TaskBoard.Common.Enums;
 using TaskBoard.Common.Extensions;
@@ -17,9 +18,7 @@ namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.CommentReads 
 		}
 
 		protected override Comment[] Run(NameValues parameters, byte[] requestBody) {
-			var taskId = parameters[HttpParameters.CommentTaskId].ToGuid();
-
-			return databaseCommentReader.GetFromTask(taskId);
+			return databaseCommentReader.GetFromTask(parameters[HttpParameters.CommentTaskId].ToGuid());
 		}
 	}
 }

@@ -14,6 +14,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Columns.ToTables();
 		}
 
+		public Column[] GetFromBoard(Guid boardId) {
+			return ModelDatabase.Columns.Where(column => column.BoardId == boardId).ToTables();
+		}
+
 		public Column[] GetWithUsingFilters(string header, Guid? boardId) {
 			IQueryable<ColumnEntity> columns = ModelDatabase.Columns;
 			UseFilter(header != null, ref columns, column => column.Header.Contains(header));
