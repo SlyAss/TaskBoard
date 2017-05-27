@@ -85,10 +85,10 @@
     <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetBoardsWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetAllColumnsFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetColumnsWithUsingFiltersFunction.cs" />
-    <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetAllCommentsFromTaskFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetCommentsFromTaskFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetAllCommentsFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetCommentsWithUsingFiltersFunction.cs" />
-    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTasksFromBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksFromBoardFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTasksFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\UserReads\GetAllUsersFunction.cs" />
@@ -102,6 +102,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskBoard.Server.Database\TaskBoard.Server.Database.csproj">
+      <Project>{73D83AE4-A1C0-4320-801B-DB89A97B56AD}</Project>
+      <Name>TaskBoard.Server.Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,9 +16,9 @@ namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.BoardReads {
 		}
 
 		protected override Board[] Run(NameValues parameters, byte[] requestBody) {
-			var boardName = parameters.GetValueOrNull(HttpParameters.BoardName);
+			var name = parameters.GetValueOrNull(HttpParameters.BoardName);
 
-			return databaseBoardReader.GetWithUsingFilters(boardName);
+			return databaseBoardReader.GetWithUsingFilters(name);
 		}
 	}
 }

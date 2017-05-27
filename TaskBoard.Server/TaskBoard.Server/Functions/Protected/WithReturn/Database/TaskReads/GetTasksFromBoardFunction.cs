@@ -7,19 +7,19 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.TaskReads {
-	public class GetAllTasksFromBoardFunction : HttpProtectedFunctionWithReturn<Task[]> {
-		public override string NameOfCalledMethod => "GetAllTasksFromBoard";
+	public class GetTasksFromBoardFunction : HttpProtectedFunctionWithReturn<Task[]> {
+		public override string NameOfCalledMethod => "GetTasksFromBoard";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;
 		private readonly IDatabaseTaskReader databaseTaskReader;
 
-		public GetAllTasksFromBoardFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseTaskReader databaseTaskReader) : base(databaseAuthorizer) {
+		public GetTasksFromBoardFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseTaskReader databaseTaskReader) : base(databaseAuthorizer) {
 			this.databaseTaskReader = databaseTaskReader;
 		}
 
 		protected override Task[] Run(NameValues parameters, byte[] requestBody) {
-			var boardId = parameters[HttpParameters.BoardId].ToGuid();
+			var boardId = parameters[HttpParameters.TaskBoardId].ToGuid();
 
-			return databaseTaskReader.GetAllFromBoard(boardId);
+			return databaseTaskReader.GetFromBoard(boardId);
 		}
 	}
 }

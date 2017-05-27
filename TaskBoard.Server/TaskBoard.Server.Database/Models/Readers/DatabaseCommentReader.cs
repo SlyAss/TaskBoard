@@ -14,7 +14,7 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Comments.ToTables();
 		}
 
-		public Comment[] GetAllFromTask(Guid taskId) {
+		public Comment[] GetFromTask(Guid taskId) {
 			return ModelDatabase.Comments.Where(comment => comment.TaskId == taskId).ToTables();
 		}
 

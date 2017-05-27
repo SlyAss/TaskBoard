@@ -1,6 +1,7 @@
 ﻿using System;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using TaskBoard.Server.Database;
 using TaskBoard.Server.Server;
 
 namespace TaskBoard.Server {
@@ -17,7 +18,7 @@ namespace TaskBoard.Server {
 			CreateHttpServer().Run(ServerConfiguration.ReadConfiguration().ServerAddress);
 		}
 		private static IHttpServer CreateHttpServer() {
-			var container = new StandardKernel();
+			var container = new StandardKernel(new NinjectDatabaseModule());
 
 			container.Bind(c => c.FromThisAssembly().SelectAllClasses().BindAllInterfaces());
 			container.Bind(c => c.FromThisAssembly().SelectAllClasses().BindAllBaseClasses());

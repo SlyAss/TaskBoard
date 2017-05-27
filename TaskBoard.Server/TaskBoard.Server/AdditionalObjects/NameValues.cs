@@ -22,10 +22,13 @@ namespace TaskBoard.Server.AdditionalObjects {
 			return nameValues.ContainsKey(key) ? nameValues[key] : null;
 		}
 
-		public string GetValueOrThrow(string key, string excetionMessage) {
-			if (nameValues.ContainsKey(key))
-				return nameValues[key];
-			throw new ArgumentException($"Отсутствует ключ {key}; {excetionMessage}");
+		public string GetValueOrThrow(string key, string additionalExceptionMessage) {
+			try {
+				return this[key];
+			}
+			catch (ArgumentException exception) {
+				throw new ArgumentException($"{exception.Message}. {additionalExceptionMessage}");
+			}
 		}
 	}
 }

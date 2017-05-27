@@ -7,19 +7,19 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.CommentReads {
-	public class GetAllCommentsFromTaskFunction : HttpProtectedFunctionWithReturn<Comment[]> {
-		public override string NameOfCalledMethod => "GetAllComments";
+	public class GetCommentsFromTaskFunction : HttpProtectedFunctionWithReturn<Comment[]> {
+		public override string NameOfCalledMethod => "GetCommentsFromTask";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;
 		private readonly IDatabaseCommentReader databaseCommentReader;
 
-		public GetAllCommentsFromTaskFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseCommentReader databaseCommentReader) : base(databaseAuthorizer) {
+		public GetCommentsFromTaskFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseCommentReader databaseCommentReader) : base(databaseAuthorizer) {
 			this.databaseCommentReader = databaseCommentReader;
 		}
 
 		protected override Comment[] Run(NameValues parameters, byte[] requestBody) {
-			var commectId = parameters[HttpParameters.CommentId].ToGuid();
+			var taskId = parameters[HttpParameters.CommentTaskId].ToGuid();
 
-			return databaseCommentReader.GetAllFromTask(commectId);
+			return databaseCommentReader.GetFromTask(taskId);
 		}
 	}
 }

@@ -15,7 +15,7 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Tasks.ToTables();
 		}
 
-		public Task[] GetAllFromBoard(Guid boardId) {
+		public Task[] GetFromBoard(Guid boardId) {
 			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId).ToTables();
 		}
 
