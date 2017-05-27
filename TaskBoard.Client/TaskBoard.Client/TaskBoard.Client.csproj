@@ -38,7 +38,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\BaseHttpClient.cs" />
+    <Compile Include="Clients\Editors\DatabaseBoardEditor.cs" />
+    <Compile Include="Clients\Editors\DatabaseColumnEditor.cs" />
+    <Compile Include="Clients\Editors\DatabaseCommentEditor.cs" />
+    <Compile Include="Clients\Editors\DatabaseTaskEditor.cs" />
+    <Compile Include="Clients\Editors\DatabaseUserEditor.cs" />
     <Compile Include="Clients\ParameretsClient.cs" />
+    <Compile Include="Clients\Readers\DatabaseBoardReader.cs" />
+    <Compile Include="Clients\Readers\DatabaseColumnReader.cs" />
+    <Compile Include="Clients\Readers\DatabaseCommentReader.cs" />
+    <Compile Include="Clients\Readers\DatabaseTaskReader.cs" />
+    <Compile Include="Clients\Readers\DatabaseUserReader.cs" />
     <Compile Include="HttpClientParameters.cs" />
     <Compile Include="HttpClientProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
