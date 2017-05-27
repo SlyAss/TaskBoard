@@ -55,6 +55,7 @@
     <Compile Include="Extensions\CommentExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="Models\DatabaseAuthorizer.cs" />
     <Compile Include="Models\DatabaseEditor.cs" />
     <Compile Include="Models\DatabaseReader.cs" />
     <Compile Include="Models\Editors\DatabaseBoardEditor.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Models\Readers\DatabaseTaskReader.cs" />
     <Compile Include="Models\Readers\DatabaseUserReader.cs" />
     <Compile Include="Models\Readers\DatabaseBoardReader.cs" />
+    <Compile Include="NinjectDatabaseModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Board.cs" />
     <Compile Include="Tables\Column.cs" />
