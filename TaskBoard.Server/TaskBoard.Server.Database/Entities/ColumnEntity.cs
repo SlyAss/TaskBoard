@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TaskBoard.Server.Database.Tables {
-	public class Column {
+namespace TaskBoard.Server.Database.Entities {
+	public class ColumnEntity {
 		[Key]
 		public Guid ColumnId { get; set; }
 
@@ -14,6 +14,6 @@ namespace TaskBoard.Server.Database.Tables {
 		public Guid BoardId { get; set; }
 
 		[Required]
-		public virtual Board Board { get; set; }
+		public virtual BoardEntity Board { get; set; }
 	}
 }

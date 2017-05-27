@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using TaskBoard.Common.Database;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Enums;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models {
 	public class DatabaseAuthorizer : IDatabaseAuthorizer {
@@ -13,7 +14,7 @@ namespace TaskBoard.Server.Database.Models {
 				AddFirstUser();
 		}
 		private void AddFirstUser() {
-			modelDatabase.Users.Add(new User {
+			modelDatabase.Users.Add(new UserEntity {
 				Login = "login",
 				Password = "password",
 				AccessType = int.MaxValue
@@ -24,9 +25,9 @@ namespace TaskBoard.Server.Database.Models {
 		public bool UserIsExist(string login, string password) {
 			return modelDatabase.Users.FirstOrDefault(user => user.Login == login && user.Password == password) != null;
 		}
-		public bool AccessIsAllowed(string login, string password, int requestedAccessType) {
+		public bool AccessIsAllowed(string login, string password, AccessType requiredAccessType) {
 			var foundUser = modelDatabase.Users.First(user => user.Login == login && user.Password == password);
-			return -(foundUser.AccessType | (-requestedAccessType - 1)) - 1 == 0;
+			return -(foundUser.AccessType | (-(int)requiredAccessType - 1)) - 1 == 0;
 		}
 	}
 }

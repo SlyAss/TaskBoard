@@ -1,35 +1,35 @@
 using System;
 using TaskBoard.Common.Database.Editors;
-using TaskBoard.Common.Tables.Proxies;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Tables;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models.Editors {
 	public class DatabaseUserEditor : DatabaseEditor, IDatabaseUserEditor {
 		public DatabaseUserEditor(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
-		public void Add(UserProxy proxy) {
-			ModelDatabase.Users.Add(new User {
+		public void Add(User table) {
+			ModelDatabase.Users.Add(new UserEntity {
 				UserId = Guid.NewGuid(),
-				Login = proxy.Login,
-				Password = proxy.Password,
-				AccessType = proxy.AccessType
+				Login = table.Login,
+				Password = table.Password,
+				AccessType = table.AccessType
 			});
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Edit(Guid oldProxyId, UserProxy newProxy) {
-			var user = ModelDatabase.GetUser(oldProxyId);
-			user.Login = newProxy.Login;
-			user.Password = newProxy.Password;
-			user.AccessType = newProxy.AccessType;
+		public void Edit(Guid oldTableId, User newTable) {
+			var user = ModelDatabase.GetUser(oldTableId);
+			user.Login = newTable.Login;
+			user.Password = newTable.Password;
+			user.AccessType = newTable.AccessType;
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Delete(Guid proxyId) {
-			DeleteUser(proxyId);
+		public void Delete(Guid tableId) {
+			DeleteUser(tableId);
 			ModelDatabase.SaveChanges();
 		}
 	}

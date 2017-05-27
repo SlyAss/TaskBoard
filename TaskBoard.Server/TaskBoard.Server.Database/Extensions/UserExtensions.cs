@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskBoard.Common.Tables.Proxies;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Tables;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Extensions {
 	public static class UserExtensions {
-		public static UserProxy[] ToProxies(this IEnumerable<User> users) {
-			return users.Select(ToProxy).ToArray();
+		public static User[] ToTables(this IEnumerable<UserEntity> users) {
+			return users.Select(ToTable).ToArray();
 		}
-		public static UserProxy ToProxy(this User user) {
-			return new UserProxy {
+		public static User ToTable(this UserEntity user) {
+			return new User {
 				UserId = user.UserId,
 				Login = user.Login,
 				Password = user.Password,

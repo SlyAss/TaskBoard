@@ -14,5 +14,4 @@ namespace TaskBoard.Server.Database.Models {
 			table = useFilter ? table.Where(predicate) : table;
 		}
 	}
-
 }

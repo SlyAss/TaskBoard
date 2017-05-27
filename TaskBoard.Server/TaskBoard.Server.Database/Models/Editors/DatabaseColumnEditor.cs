@@ -1,32 +1,32 @@
 ﻿using System;
 using TaskBoard.Common.Database.Editors;
-using TaskBoard.Common.Tables.Proxies;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Tables;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models.Editors {
 	public class DatabaseColumnEditor : DatabaseEditor, IDatabaseColumnEditor {
 		public DatabaseColumnEditor(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
-		public void Add(ColumnProxy proxy) {
-			ModelDatabase.Columns.Add(new Column {
+		public void Add(Column table) {
+			ModelDatabase.Columns.Add(new ColumnEntity {
 				ColumnId = Guid.NewGuid(),
-				Header = proxy.Header,
-				Board = ModelDatabase.GetBoard(proxy.BoardId)
+				Header = table.Header,
+				Board = ModelDatabase.GetBoard(table.BoardId)
 			});
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Edit(Guid oldProxyId, ColumnProxy newProxy) {
-			var column = ModelDatabase.GetColumn(oldProxyId);
-			column.Header = newProxy.Header;
+		public void Edit(Guid oldTableId, Column newTable) {
+			var column = ModelDatabase.GetColumn(oldTableId);
+			column.Header = newTable.Header;
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Delete(Guid proxyId) {
-			DeleteColumn(proxyId);
+		public void Delete(Guid tableId) {
+			DeleteColumn(tableId);
 			ModelDatabase.SaveChanges();
 		}
 	}

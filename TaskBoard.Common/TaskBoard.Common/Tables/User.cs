@@ -1,8 +1,11 @@
 ﻿using System;
 using TaskBoard.Common.Tables.Attributes;
 
-namespace TaskBoard.Common.Tables.Proxies {
-	public class UserProxy {
+namespace TaskBoard.Common.Tables {
+	// ReSharper disable ClassNeverInstantiated.Global
+	// ReSharper disable UnusedMember.Global
+
+	public class User {
 		[HeaderColumn("Id пользователя")]
 		public Guid UserId { get; set; }
 

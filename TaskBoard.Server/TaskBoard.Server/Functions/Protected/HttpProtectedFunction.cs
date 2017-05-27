@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using TaskBoard.Common.Database;
+using TaskBoard.Common.Enums;
 using TaskBoard.Common.Http;
-using TaskBoard.Common.Tables.Enums;
 using TaskBoard.Server.AdditionalObjects;
 using TaskBoard.Server.Exceptions;
 
@@ -16,11 +16,12 @@ namespace TaskBoard.Server.Functions.Protected {
 		}
 
 		public void Execute(HttpListenerContext context, NameValues parameters, byte[] requestBody) {
-			if (parameters.NotContains(HttpParameters.Login) || parameters.NotContains(HttpParameters.Password))
-				throw new HttpException(HttpStatusCode.Forbidden, "Для вызова этой функции необходимо передать параметры пользователя");
-			if (!databaseAuthorizer.UserIsExist(parameters[HttpParameters.Login], parameters[HttpParameters.Password]))
+			var login = parameters.GetOrThrow(HttpParameters.Login, "Для вызова этой функции необходимо передать параметры пользователя");
+			var password = parameters.GetOrThrow(HttpParameters.Password, "Для вызова этой функции необходимо передать параметры пользователя");
+
+			if (!databaseAuthorizer.UserIsExist(login, password))
 				throw new HttpException(HttpStatusCode.NotFound, "Пользователь не найден");
-			if (!databaseAuthorizer.AccessIsAllowed(parameters[HttpParameters.Login], parameters[HttpParameters.Password], (int)RequiredAccessType))
+			if (!databaseAuthorizer.AccessIsAllowed(login, password, RequiredAccessType))
 				throw new HttpException(HttpStatusCode.Forbidden, "У вас нет доступа к этой функции");
 			PerformRun(context, parameters, requestBody);
 		}

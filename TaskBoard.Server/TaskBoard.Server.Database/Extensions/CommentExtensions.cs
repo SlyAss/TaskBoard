@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskBoard.Common.Tables.Proxies;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Tables;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Extensions {
 	public static class CommentExtensions {
-		public static CommentProxy[] ToProxies(this IEnumerable<Comment> comments) {
-			return comments.Select(ToProxy).ToArray();
+		public static Comment[] ToTables(this IEnumerable<CommentEntity> comments) {
+			return comments.Select(ToTable).ToArray();
 		}
-		public static CommentProxy ToProxy(this Comment comment) {
-			return new CommentProxy {
+		public static Comment ToTable(this CommentEntity comment) {
+			return new Comment {
 				CommentId = comment.CommentId,
 				Content = comment.Content,
 				CreateDateTime = comment.CreateDateTime,

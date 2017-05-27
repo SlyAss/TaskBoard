@@ -1,31 +1,31 @@
 ﻿using System;
 using TaskBoard.Common.Database.Editors;
-using TaskBoard.Common.Tables.Proxies;
-using TaskBoard.Server.Database.Tables;
+using TaskBoard.Common.Tables;
+using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models.Editors {
 	public class DatabaseBoardEditor : DatabaseEditor, IDatabaseBoardEditor {
 		public DatabaseBoardEditor(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
-		public void Add(BoardProxy proxy) {
-			ModelDatabase.Boards.Add(new Board {
+		public void Add(Board table) {
+			ModelDatabase.Boards.Add(new BoardEntity {
 				BoardId = Guid.NewGuid(),
-				Name = proxy.Name
+				Name = table.Name
 			});
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Edit(Guid oldProxyId, BoardProxy newProxy) {
-			var board = ModelDatabase.GetBoard(oldProxyId);
-			board.Name = newProxy.Name;
+		public void Edit(Guid oldTableId, Board newTable) {
+			var board = ModelDatabase.GetBoard(oldTableId);
+			board.Name = newTable.Name;
 
 			ModelDatabase.SaveChanges();
 		}
 
-		public void Delete(Guid proxyId) {
-			DeleteBoard(proxyId);
+		public void Delete(Guid tableId) {
+			DeleteBoard(tableId);
 			ModelDatabase.SaveChanges();
 		}
 	}

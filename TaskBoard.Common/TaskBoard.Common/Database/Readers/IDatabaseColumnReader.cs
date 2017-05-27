@@ -1,8 +1,10 @@
 ﻿using System;
-using TaskBoard.Common.Tables.Proxies;
+using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Common.Database.Readers {
-	public interface IDatabaseColumnReader : IDatabaseReader<ColumnProxy> {
-		ColumnProxy[] GetWithUsingFilters(string header, Guid? boardId);
+	// ReSharper disable UnusedMember.Global
+
+	public interface IDatabaseColumnReader : IDatabaseReader<Column> {
+		Column[] GetWithUsingFilters(string header, Guid? boardId);
 	}
 }

@@ -66,6 +66,21 @@
     <Compile Include="Functions\Protected\HttpProtectedFunction.cs" />
     <Compile Include="Functions\Protected\HttpProtectedFunctionWithoutReturn.cs" />
     <Compile Include="Functions\Protected\HttpProtectedFunctionWithReturn.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\BoardEdits\AddBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\BoardEdits\DeleteBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\BoardEdits\EditBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\ColumnEdits\AddColumnFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\ColumnEdits\DeleteColumnFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\ColumnEdits\EditColumnFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\CommentEdits\AddCommentFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\CommentEdits\DeleteCommentFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\CommentEdits\EditCommentFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\TaskEdits\AddTaskFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\TaskEdits\DeleteTaskFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\TaskEdits\EditTaskFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\AddUserFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\DeleteUserFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\EditUserFunction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerConfiguration.cs" />
@@ -75,6 +90,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Functions\Protected\WithReturn\Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using TaskBoard.Common.Tables.Enums;
+using TaskBoard.Common.Enums;
 
-namespace TaskBoard.Server.Database.Tables {
-	public class Task {
+namespace TaskBoard.Server.Database.Entities {
+	public class TaskEntity {
 		[Key]
 		public Guid TaskId { get; set; }
 
@@ -27,20 +27,20 @@ namespace TaskBoard.Server.Database.Tables {
 
 		public Guid? DeveloperId { get; set; }
 
-		public virtual User Developer { get; set; }
+		public virtual UserEntity Developer { get; set; }
 
 		public Guid? ReviewerId { get; set; }
 
-		public virtual User Reviewer { get; set; }
+		public virtual UserEntity Reviewer { get; set; }
 
 		public Guid? ColumnId { get; set; }
 
-		public virtual Column Column { get; set; }
+		public virtual ColumnEntity Column { get; set; }
 
 		[Required]
 		public Guid BoardId { get; set; }
 
 		[Required]
-		public virtual Board Board { get; set; }
+		public virtual BoardEntity Board { get; set; }
 	}
 }

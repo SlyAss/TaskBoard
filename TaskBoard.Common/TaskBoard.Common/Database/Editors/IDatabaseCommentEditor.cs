@@ -1,6 +1,8 @@
-﻿using TaskBoard.Common.Tables.Proxies;
+﻿using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Common.Database.Editors {
-	public interface IDatabaseCommentEditor : IDatabaseEditor<CommentProxy> {
+	// ReSharper disable UnusedMember.Global
+
+	public interface IDatabaseCommentEditor : IDatabaseEditor<Comment> {
 	}
 }

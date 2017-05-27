@@ -1,9 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TaskBoard.Server.AdditionalObjects {
 	public class NameValues {
 		private readonly Dictionary<string, string> nameValues;
-		public string this[string key] => nameValues[key];
+		public string this[string key] {
+			get {
+				if (nameValues.ContainsKey(key))
+					return nameValues[key];
+				throw new ArgumentException($"Отсутствует ключ {key}");
+			}
+		}
 
 		public NameValues() : this(new Dictionary<string, string>()) {
 		}
@@ -11,8 +18,10 @@ namespace TaskBoard.Server.AdditionalObjects {
 			this.nameValues = nameValues;
 		}
 
-		public bool NotContains(string key) {
-			return !nameValues.ContainsKey(key);
+		public string GetOrThrow(string key, string excetionMessage) {
+			if (nameValues.ContainsKey(key))
+				return nameValues[key];
+			throw new ArgumentException($"Отсутствует ключ {key}; {excetionMessage}");
 		}
 	}
 }

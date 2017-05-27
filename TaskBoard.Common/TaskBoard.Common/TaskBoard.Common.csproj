@@ -55,20 +55,21 @@
     <Compile Include="Extensions\BytesExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="GlobalConfiguration.cs" />
     <Compile Include="Http\HttpParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\JsonSerializer.cs" />
     <Compile Include="Serializers\XmlSerializer.cs" />
     <Compile Include="Tables\Attributes\HeaderColumnAttribute.cs" />
-    <Compile Include="Tables\Enums\AccessType.cs" />
-    <Compile Include="Tables\Enums\Priority.cs" />
-    <Compile Include="Tables\Enums\State.cs" />
-    <Compile Include="Tables\Proxies\BoardProxy.cs" />
-    <Compile Include="Tables\Proxies\ColumnProxy.cs" />
-    <Compile Include="Tables\Proxies\CommentProxy.cs" />
-    <Compile Include="Tables\Proxies\TaskProxy.cs" />
-    <Compile Include="Tables\Proxies\UserProxy.cs" />
+    <Compile Include="Enums\AccessType.cs" />
+    <Compile Include="Enums\Priority.cs" />
+    <Compile Include="Enums\State.cs" />
+    <Compile Include="Tables\Board.cs" />
+    <Compile Include="Tables\Column.cs" />
+    <Compile Include="Tables\Comment.cs" />
+    <Compile Include="Tables\Task.cs" />
+    <Compile Include="Tables\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

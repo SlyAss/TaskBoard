@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskBoard.Server.Database.Tables {
-	public class Comment {
+namespace TaskBoard.Server.Database.Entities {
+	public class CommentEntity {
 		[Key]
 		public Guid CommentId { get; set; }
 
@@ -16,12 +16,12 @@ namespace TaskBoard.Server.Database.Tables {
 		public Guid UserId { get; set; }
 
 		[Required]
-		public virtual User User { get; set; }
+		public virtual UserEntity User { get; set; }
 
 		[Required]
 		public Guid TaskId { get; set; }
 
 		[Required]
-		public virtual Task Task { get; set; }
+		public virtual TaskEntity Task { get; set; }
 	}
 }

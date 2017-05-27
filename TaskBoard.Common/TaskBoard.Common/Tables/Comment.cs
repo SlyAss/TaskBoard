@@ -1,8 +1,11 @@
 ﻿using System;
 using TaskBoard.Common.Tables.Attributes;
 
-namespace TaskBoard.Common.Tables.Proxies {
-	public class CommentProxy {
+namespace TaskBoard.Common.Tables {
+	// ReSharper disable ClassNeverInstantiated.Global
+	// ReSharper disable UnusedMember.Global
+
+	public class Comment {
 		[HeaderColumn("Id комментария")]
 		public Guid CommentId { get; set; }
 

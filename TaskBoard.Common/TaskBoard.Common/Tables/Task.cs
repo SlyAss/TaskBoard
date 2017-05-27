@@ -1,9 +1,12 @@
 ﻿using System;
+using TaskBoard.Common.Enums;
 using TaskBoard.Common.Tables.Attributes;
-using TaskBoard.Common.Tables.Enums;
 
-namespace TaskBoard.Common.Tables.Proxies {
-	public class TaskProxy {
+namespace TaskBoard.Common.Tables {
+	// ReSharper disable ClassNeverInstantiated.Global
+	// ReSharper disable UnusedMember.Global
+
+	public class Task {
 		[HeaderColumn("Id задачи")]
 		public Guid TaskId { get; set; }
 

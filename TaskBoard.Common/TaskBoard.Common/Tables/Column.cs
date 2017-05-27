@@ -1,8 +1,11 @@
 ﻿using System;
 using TaskBoard.Common.Tables.Attributes;
 
-namespace TaskBoard.Common.Tables.Proxies {
-	public class ColumnProxy {
+namespace TaskBoard.Common.Tables {
+	// ReSharper disable ClassNeverInstantiated.Global
+	// ReSharper disable UnusedMember.Global
+
+	public class Column {
 		[HeaderColumn("Id столбца")]
 		public Guid ColumnId { get; set; }
 

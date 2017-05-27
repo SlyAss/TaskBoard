@@ -1,10 +1,12 @@
 ﻿using System;
-using TaskBoard.Common.Tables.Enums;
-using TaskBoard.Common.Tables.Proxies;
+using TaskBoard.Common.Enums;
+using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Common.Database.Readers {
-	public interface IDatabaseTaskReader : IDatabaseReader<TaskProxy> {
-		TaskProxy[] GetAllFromBoard(Guid boardId);
-		TaskProxy[] GetWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId);
+	// ReSharper disable UnusedMember.Global
+
+	public interface IDatabaseTaskReader : IDatabaseReader<Task> {
+		Task[] GetAllFromBoard(Guid boardId);
+		Task[] GetWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId);
 	}
 }

@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TaskBoard.Server.Database.Tables {
-	public class Board {
+namespace TaskBoard.Server.Database.Entities {
+	public class BoardEntity {
 		[Key]
 		public Guid BoardId { get; set; }
 

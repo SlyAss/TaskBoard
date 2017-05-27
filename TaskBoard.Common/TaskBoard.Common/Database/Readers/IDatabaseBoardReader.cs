@@ -1,7 +1,9 @@
-﻿using TaskBoard.Common.Tables.Proxies;
+﻿using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Common.Database.Readers {
-	public interface IDatabaseBoardReader : IDatabaseReader<BoardProxy> {
-		BoardProxy[] GetWithUsingFilters(string name);
+	// ReSharper disable UnusedMember.Global
+
+	public interface IDatabaseBoardReader : IDatabaseReader<Board> {
+		Board[] GetWithUsingFilters(string name);
 	}
 }
