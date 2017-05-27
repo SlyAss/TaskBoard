@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using TaskBoard.Common.Enums;
 
 namespace TaskBoard.Server.Database.Entities {
+	// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
+	// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 	public class TaskEntity {
 		[Key]
 		public Guid TaskId { get; set; }

@@ -6,6 +6,8 @@ using TaskBoard.Common.Http;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.ColumnEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class DeleteColumnFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "DeleteColumn";
 		protected override AccessType RequiredAccessType => AccessType.UserWrite;

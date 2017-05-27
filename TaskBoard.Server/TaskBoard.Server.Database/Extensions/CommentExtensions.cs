@@ -4,6 +4,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Extensions {
+	// ReSharper disable MemberCanBePrivate.Global
+
 	public static class CommentExtensions {
 		public static Comment[] ToTables(this IEnumerable<CommentEntity> comments) {
 			return comments.Select(ToTable).ToArray();

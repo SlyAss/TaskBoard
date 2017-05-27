@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskBoard.Server.Database.Entities {
+	// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
+	// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 	public class ColumnEntity {
 		[Key]
 		public Guid ColumnId { get; set; }

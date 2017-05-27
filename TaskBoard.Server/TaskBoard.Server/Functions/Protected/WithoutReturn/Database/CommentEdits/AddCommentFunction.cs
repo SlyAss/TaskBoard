@@ -6,6 +6,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.CommentEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class AddCommentFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "AddComment";
 		protected override AccessType RequiredAccessType => AccessType.UserWrite;

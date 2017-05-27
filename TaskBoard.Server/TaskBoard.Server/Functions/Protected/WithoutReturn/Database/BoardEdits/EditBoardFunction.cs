@@ -7,6 +7,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.BoardEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class EditBoardFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "EditBoard";
 		protected override AccessType RequiredAccessType => AccessType.UserWrite;

@@ -7,6 +7,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.ColumnReads {
+	// ReSharper disable UnusedMember.Global
+
 	public class GetColumnsWithUsingFiltersFunction : HttpProtectedFunctionWithReturn<Column[]> {
 		public override string NameOfCalledMethod => "GetColumnsWithUsingFilters";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;

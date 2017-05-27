@@ -4,6 +4,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models.Editors {
+	// ReSharper disable UnusedMember.Global
+
 	public class DatabaseTaskEditor : DatabaseEditor, IDatabaseTaskEditor {
 		public DatabaseTaskEditor(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}

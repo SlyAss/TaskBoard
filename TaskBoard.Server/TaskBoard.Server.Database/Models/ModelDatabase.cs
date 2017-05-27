@@ -5,6 +5,9 @@ using System.Linq;
 using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models {
+	// ReSharper disable ClassNeverInstantiated.Global
+	// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 	public class ModelDatabase : DbContext {
 		public DbSet<CommentEntity> Comments { get; set; }
 		public DbSet<ColumnEntity> Columns { get; set; }

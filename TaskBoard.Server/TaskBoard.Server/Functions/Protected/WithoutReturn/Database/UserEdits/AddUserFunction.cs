@@ -6,6 +6,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.UserEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class AddUserFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "AddUser";
 		protected override AccessType RequiredAccessType => AccessType.AdminWrite;

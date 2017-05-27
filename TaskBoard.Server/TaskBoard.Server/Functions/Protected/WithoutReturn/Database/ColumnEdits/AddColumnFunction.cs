@@ -6,6 +6,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.ColumnEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class AddColumnFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "AddColumn";
 		protected override AccessType RequiredAccessType => AccessType.UserWrite;

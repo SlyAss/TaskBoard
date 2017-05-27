@@ -11,6 +11,8 @@ using TaskBoard.Server.Extensions;
 using TaskBoard.Server.Functions;
 
 namespace TaskBoard.Server.Server {
+	// ReSharper disable UnusedMember.Global
+
 	public class HttpServer : IHttpServer {
 		private readonly IHttpFunction[] httpFunctions;
 		private readonly ConcurrentDictionary<string, IHttpFunction> hashedFunctions;

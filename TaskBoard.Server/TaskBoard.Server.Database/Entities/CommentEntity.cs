@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace TaskBoard.Server.Database.Entities {
+	// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
+	// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 	public class CommentEntity {
 		[Key]
 		public Guid CommentId { get; set; }

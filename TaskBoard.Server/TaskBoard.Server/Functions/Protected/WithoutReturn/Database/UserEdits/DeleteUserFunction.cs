@@ -6,6 +6,8 @@ using TaskBoard.Common.Http;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithoutReturn.Database.UserEdits {
+	// ReSharper disable UnusedMember.Global
+
 	public class DeleteUserFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "DeleteUser";
 		protected override AccessType RequiredAccessType => AccessType.AdminWrite;

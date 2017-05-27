@@ -5,6 +5,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.BoardReads {
+	// ReSharper disable UnusedMember.Global
+
 	public class GetAllBoardsFunction : HttpProtectedFunctionWithReturn<Board[]> {
 		public override string NameOfCalledMethod => "GetAllBoards";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;

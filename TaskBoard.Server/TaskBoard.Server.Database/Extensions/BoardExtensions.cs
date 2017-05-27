@@ -4,6 +4,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Extensions {
+	// ReSharper disable MemberCanBePrivate.Global
+
 	public static class BoardExtensions {
 		public static Board[] ToTables(this IEnumerable<BoardEntity> boards) {
 			return boards.Select(ToTable).ToArray();

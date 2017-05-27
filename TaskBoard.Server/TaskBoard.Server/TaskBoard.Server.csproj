@@ -63,6 +63,8 @@
     <Compile Include="Functions\IHttpFunction.cs" />
     <Compile Include="Functions\NonProtected\HttpFunctionWithoutReturn.cs" />
     <Compile Include="Functions\NonProtected\HttpFunctionWithReturn.cs" />
+    <Compile Include="Functions\NonProtected\WithoutReturn\CheckUserIsExistFunction.cs" />
+    <Compile Include="Functions\NonProtected\WithoutReturn\PingFunction.cs" />
     <Compile Include="Functions\Protected\HttpProtectedFunction.cs" />
     <Compile Include="Functions\Protected\HttpProtectedFunctionWithoutReturn.cs" />
     <Compile Include="Functions\Protected\HttpProtectedFunctionWithReturn.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\AddUserFunction.cs" />
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\DeleteUserFunction.cs" />
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\EditUserFunction.cs" />
+    <Compile Include="Functions\Protected\WithoutReturn\StopServerFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetAllBoardsFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetBoardsWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetAllColumnsFunction.cs" />

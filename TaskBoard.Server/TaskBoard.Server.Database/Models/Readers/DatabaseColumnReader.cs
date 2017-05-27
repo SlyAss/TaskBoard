@@ -6,6 +6,8 @@ using TaskBoard.Server.Database.Entities;
 using TaskBoard.Server.Database.Extensions;
 
 namespace TaskBoard.Server.Database.Models.Readers {
+	// ReSharper disable UnusedMember.Global
+
 	public class DatabaseColumnReader : DatabaseReader, IDatabaseColumnReader {
 		public DatabaseColumnReader(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}

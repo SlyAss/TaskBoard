@@ -5,6 +5,8 @@ using TaskBoard.Server.Database.Entities;
 using TaskBoard.Server.Database.Extensions;
 
 namespace TaskBoard.Server.Database.Models.Readers {
+	// ReSharper disable UnusedMember.Global
+
 	public class DatabaseUserReader : DatabaseReader, IDatabaseUserReader {
 		public DatabaseUserReader(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}

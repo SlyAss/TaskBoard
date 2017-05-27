@@ -4,6 +4,8 @@ using TaskBoard.Server.AdditionalObjects;
 using TaskBoard.Server.Extensions;
 
 namespace TaskBoard.Server.Functions.NonProtected {
+	// ReSharper disable UnusedMember.Global
+
 	public abstract class HttpFunctionWithReturn<TResult> : IHttpFunction {
 		public abstract string NameOfCalledMethod { get; }
 

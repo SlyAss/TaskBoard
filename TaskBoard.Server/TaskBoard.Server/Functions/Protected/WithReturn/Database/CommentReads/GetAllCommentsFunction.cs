@@ -5,6 +5,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.CommentReads {
+	// ReSharper disable UnusedMember.Global
+
 	public class GetAllCommentsFunction : HttpProtectedFunctionWithReturn<Comment[]> {
 		public override string NameOfCalledMethod => "GetAllComments";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;

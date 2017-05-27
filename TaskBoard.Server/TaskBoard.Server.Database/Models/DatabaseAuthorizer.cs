@@ -4,6 +4,8 @@ using TaskBoard.Common.Enums;
 using TaskBoard.Server.Database.Entities;
 
 namespace TaskBoard.Server.Database.Models {
+	// ReSharper disable UnusedMember.Global
+
 	public class DatabaseAuthorizer : IDatabaseAuthorizer {
 		private readonly ModelDatabase modelDatabase;
 

@@ -5,6 +5,8 @@ using TaskBoard.Server.AdditionalObjects;
 using TaskBoard.Server.Extensions;
 
 namespace TaskBoard.Server.Functions.Protected {
+	// ReSharper disable UnusedParameter.Global
+
 	public abstract class HttpProtectedFunctionWithReturn<TResult> : HttpProtectedFunction {
 		protected HttpProtectedFunctionWithReturn(IDatabaseAuthorizer databaseAuthorizer) : base(databaseAuthorizer) {
 		}

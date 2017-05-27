@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace TaskBoard.Server.Database.Models {
 	public abstract class DatabaseReader {
-		protected ModelDatabase ModelDatabase;
+		protected readonly ModelDatabase ModelDatabase;
 
 		protected DatabaseReader(ModelDatabase modelDatabase) {
 			ModelDatabase = modelDatabase;
