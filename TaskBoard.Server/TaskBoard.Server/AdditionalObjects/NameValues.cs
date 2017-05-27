@@ -18,7 +18,11 @@ namespace TaskBoard.Server.AdditionalObjects {
 			this.nameValues = nameValues;
 		}
 
-		public string GetOrThrow(string key, string excetionMessage) {
+		public string GetValueOrNull(string key) {
+			return nameValues.ContainsKey(key) ? nameValues[key] : null;
+		}
+
+		public string GetValueOrThrow(string key, string excetionMessage) {
 			if (nameValues.ContainsKey(key))
 				return nameValues[key];
 			throw new ArgumentException($"Отсутствует ключ {key}; {excetionMessage}");

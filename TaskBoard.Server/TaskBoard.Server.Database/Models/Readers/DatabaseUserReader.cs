@@ -13,10 +13,9 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Users.ToTables();
 		}
 
-		public User[] GetWithUsingFilters(string login, string password) {
+		public User[] GetWithUsingFilters(string login) {
 			IQueryable<UserEntity> users = ModelDatabase.Users;
 			UseFilter(login != null, ref users, user => user.Login.Contains(login));
-			UseFilter(password != null, ref users, user => user.Password.Contains(password));
 
 			return users.ToTables();
 		}

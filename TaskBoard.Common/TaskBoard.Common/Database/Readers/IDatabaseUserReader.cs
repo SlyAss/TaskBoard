@@ -4,6 +4,6 @@ namespace TaskBoard.Common.Database.Readers {
 	// ReSharper disable UnusedMember.Global
 
 	public interface IDatabaseUserReader : IDatabaseReader<User> {
-		User[] GetWithUsingFilters(string login, string password);
+		User[] GetWithUsingFilters(string login);
 	}
 }

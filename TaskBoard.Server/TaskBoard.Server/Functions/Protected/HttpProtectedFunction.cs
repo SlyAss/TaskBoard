@@ -16,8 +16,8 @@ namespace TaskBoard.Server.Functions.Protected {
 		}
 
 		public void Execute(HttpListenerContext context, NameValues parameters, byte[] requestBody) {
-			var login = parameters.GetOrThrow(HttpParameters.Login, "Для вызова этой функции необходимо передать параметры пользователя");
-			var password = parameters.GetOrThrow(HttpParameters.Password, "Для вызова этой функции необходимо передать параметры пользователя");
+			var login = parameters.GetValueOrThrow(HttpParameters.Login, "Для вызова этой функции необходимо передать параметры пользователя");
+			var password = parameters.GetValueOrThrow(HttpParameters.Password, "Для вызова этой функции необходимо передать параметры пользователя");
 
 			if (!databaseAuthorizer.UserIsExist(login, password))
 				throw new HttpException(HttpStatusCode.NotFound, "Пользователь не найден");

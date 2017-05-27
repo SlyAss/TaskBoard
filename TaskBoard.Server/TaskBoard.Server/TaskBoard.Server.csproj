@@ -81,6 +81,18 @@
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\AddUserFunction.cs" />
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\DeleteUserFunction.cs" />
     <Compile Include="Functions\Protected\WithoutReturn\Database\UserEdits\EditUserFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetAllBoardsFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\BoardReads\GetBoardsWithUsingFiltersFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetAllColumnsFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\ColumnReads\GetColumnsWithUsingFiltersFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetAllCommentsFromTaskFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetAllCommentsFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\CommentReads\GetCommentsWithUsingFiltersFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTasksFromBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTasksFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksWithUsingFiltersFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\UserReads\GetAllUsersFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\UserReads\GetUsersWithUsingFiltersFunction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerConfiguration.cs" />
@@ -90,9 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Functions\Protected\WithReturn\Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
