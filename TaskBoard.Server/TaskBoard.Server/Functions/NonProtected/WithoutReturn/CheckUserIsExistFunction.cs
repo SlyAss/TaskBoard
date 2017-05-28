@@ -5,6 +5,8 @@ using TaskBoard.Server.AdditionalObjects;
 using TaskBoard.Server.Exceptions;
 
 namespace TaskBoard.Server.Functions.NonProtected.WithoutReturn {
+	// ReSharper disable UnusedMember.Global
+
 	public class CheckUserIsExistFunction : HttpFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "CheckUserIsExist";
 		private readonly IDatabaseAuthorizer databaseAuthorizer;

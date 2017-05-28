@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TaskBoard.Common.Database;
 using TaskBoard.Common.Enums;
 using TaskBoard.Server.Database.Entities;
@@ -17,9 +18,10 @@ namespace TaskBoard.Server.Database.Models {
 		}
 		private void AddFirstUser() {
 			modelDatabase.Users.Add(new UserEntity {
+				UserId = Guid.NewGuid(),
 				Login = "login",
 				Password = "password",
-				AccessType = int.MaxValue
+				AccessType = -1
 			});
 			modelDatabase.SaveChanges();
 		}

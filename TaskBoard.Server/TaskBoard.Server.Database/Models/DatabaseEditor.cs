@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace TaskBoard.Server.Database.Models {
@@ -16,7 +17,7 @@ namespace TaskBoard.Server.Database.Models {
 		}
 
 		protected void DeleteColumn(Guid columnId) {
-			ModelDatabase.Tasks.Where(t => t.ColumnId == columnId).ToList().ForEach(task => task.Column = null);
+			ModelDatabase.Tasks.Include(t => t.Developer).Include(t => t.Reviewer).Include(t => t.Column).Include(t => t.Board).Where(t => t.ColumnId == columnId).ToList().ForEach(task => task.ColumnId = null);
 			ModelDatabase.Columns.Remove(ModelDatabase.GetColumn(columnId));
 		}
 
@@ -31,8 +32,8 @@ namespace TaskBoard.Server.Database.Models {
 
 		protected void DeleteUser(Guid userId) {
 			ModelDatabase.Comments.Where(comment => comment.UserId == userId).ToList().ForEach(comment => DeleteComment(comment.CommentId));
-			ModelDatabase.Tasks.Where(task => task.DeveloperId == userId).ToList().ForEach(task => task.DeveloperId = null);
-			ModelDatabase.Tasks.Where(task => task.ReviewerId == userId).ToList().ForEach(task => task.ReviewerId = null);
+			ModelDatabase.Tasks.Include(t => t.Developer).Include(t => t.Reviewer).Include(t => t.Column).Include(t => t.Board).Where(task => task.DeveloperId == userId).ToList().ForEach(task => task.DeveloperId = null);
+			ModelDatabase.Tasks.Include(t => t.Developer).Include(t => t.Reviewer).Include(t => t.Column).Include(t => t.Board).Where(task => task.ReviewerId == userId).ToList().ForEach(task => task.ReviewerId = null);
 			ModelDatabase.Users.Remove(ModelDatabase.GetUser(userId));
 		}
 	}

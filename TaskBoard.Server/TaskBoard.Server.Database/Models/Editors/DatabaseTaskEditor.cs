@@ -35,9 +35,9 @@ namespace TaskBoard.Server.Database.Models.Editors {
 			task.Branch = newTable.Branch;
 			task.State = newTable.State;
 			task.Priority = newTable.Priority;
-			task.Developer = ModelDatabase.GetUser(newTable.DeveloperId);
-			task.Reviewer = ModelDatabase.GetUser(newTable.ReviewerId);
-			task.Column = ModelDatabase.GetColumn(newTable.ColumnId);
+			task.DeveloperId = ModelDatabase.GetUser(newTable.DeveloperId)?.UserId;
+			task.ReviewerId = ModelDatabase.GetUser(newTable.ReviewerId)?.UserId;
+			task.ColumnId = ModelDatabase.GetColumn(newTable.ColumnId)?.ColumnId;
 
 			ModelDatabase.SaveChanges();
 		}
