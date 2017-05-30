@@ -14,15 +14,11 @@ namespace TaskBoard.Client {
 		public int TimeoutMs => httpClientParameters.TimeoutMs;
 		public string Login => httpClientParameters.Login;
 		public string Password => httpClientParameters.Password;
+		public bool IsAuthorize => httpClientParameters.IsAuthorize;
 
-		public HttpClientProvider(string serverAddress, int timeoutMs, string login, string password) {
+		public HttpClientProvider() {
 			hashedClients = new ConcurrentDictionary<string, BaseHttpClient>();
-			httpClientParameters = new HttpClientParameters {
-				ServerAddress = serverAddress,
-				TimeoutMs = timeoutMs,
-				Login = login,
-				Password = password
-			};
+			httpClientParameters = new HttpClientParameters();
 		}
 
 		public ParameretsClient GetParameretsClient() {

@@ -10,14 +10,21 @@ namespace TaskBoard.Client.Clients {
 			this.httpClientParameters = httpClientParameters;
 		}
 
-		public void SetServerAddressAndTimeoutMs(string serverAddress, int timeoutMs) {
+		public void SetServerAddress(string serverAddress, int timeoutMs) {
+			if (string.IsNullOrEmpty(serverAddress))
+				return;
+
 			serverAddress = new UriBuilder(serverAddress).Uri.ToString();
 
 			new ParameretsClient(new HttpClientParameters { ServerAddress = serverAddress, TimeoutMs = timeoutMs }).SendRequest("Ping");
 			httpClientParameters.ServerAddress = serverAddress;
 			httpClientParameters.TimeoutMs = timeoutMs;
 		}
-		public void SetLoginAndPassword(string login, string password) {
+
+		public void SignIn(string login, string password) {
+			if (httpClientParameters.IsAuthorize)
+				throw new ArgumentException("Пользователь уже авторизован");
+
 			var parameters = new Dictionary<string, string> {
 				[HttpParameters.Login] = login,
 				[HttpParameters.Password] = password
@@ -26,6 +33,16 @@ namespace TaskBoard.Client.Clients {
 			SendRequest("CheckUserIsExist", parameters);
 			httpClientParameters.Login = login;
 			httpClientParameters.Password = password;
+			httpClientParameters.IsAuthorize = true;
+		}
+
+		public void SingOut() {
+			if (!httpClientParameters.IsAuthorize)
+				throw new ArgumentException("Пользователь не авторизован");
+
+			httpClientParameters.Login = null;
+			httpClientParameters.Password = null;
+			httpClientParameters.IsAuthorize = false;
 		}
 	}
 }

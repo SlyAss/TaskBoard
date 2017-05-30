@@ -1,0 +1,45 @@
+﻿<Window x:Class="TaskBoard.Client.UI.AdditionalWindows.AuthorizationWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="AuthorizationWindow" Width="350" SizeToContent="Height">
+	<Grid Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="5" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="5" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="5" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Label Grid.Row="0" Grid.Column="0" Name="LabelLogin" Content="Логин" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+			<TextBox Grid.Row="0" Grid.Column="1" Name="TextBoxLogin" VerticalContentAlignment="Center" />
+
+			<Label Grid.Row="2" Grid.Column="0" Name="LabelPassword" Content="Пароль" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+			<PasswordBox Grid.Row="2" Grid.Column="1" Name="PasswordBoxPassword" VerticalContentAlignment="Center" />
+
+			<CheckBox Grid.Row="4" Grid.Column="1" Name="CheckBoxSaveLoginAndPassword" Content="Сохранять логин и пароль" />
+		</Grid>
+
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<Button Grid.Column="1" Content="Войти" Click="ButtonSignIn_OnClick" MinWidth="80" Padding="15,4,15,4" Margin="5,5,0,0" />
+			<Button Grid.Column="2" Content="Отмена" Click="ButtonCancel_OnClick" MinWidth="80" Padding="15,4,15,4" Margin="5,5,0,0" />
+		</Grid>
+	</Grid>
+</Window>

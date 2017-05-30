@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using TaskBoard.Common.Extensions;
@@ -41,6 +42,9 @@ namespace TaskBoard.Client.Clients {
 		}
 
 		private HttpWebRequest CreateWebRequest(string methodName, Dictionary<string, string> parameters, byte[] requestBody) {
+			if (string.IsNullOrEmpty(httpClientParameters.ServerAddress))
+				throw new ArgumentException("Необходимо указать адрес сервера");
+
 			var webRequest = (HttpWebRequest)WebRequest.Create(httpClientParameters.ServerAddress + CreateRequestUri(methodName, parameters));
 			webRequest.Timeout = httpClientParameters.TimeoutMs;
 
