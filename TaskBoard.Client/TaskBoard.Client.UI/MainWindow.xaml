@@ -1,0 +1,20 @@
+﻿<Window x:Class="TaskBoard.Client.UI.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="MainWindow" Height="350" Width="525">
+	<Grid>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<Menu Grid.Column="0" HorizontalAlignment="Left">
+				<MenuItem Name="MenuItemSettings" Header="Настройки" HorizontalAlignment="Right" />
+			</Menu>
+
+			<Menu Grid.Column="2" Name="MenuAuthorization" HorizontalAlignment="Right" />
+		</Grid>
+	</Grid>
+</Window>
