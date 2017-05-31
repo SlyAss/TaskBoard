@@ -14,6 +14,7 @@ namespace TaskBoard.Server.Database.Models.Editors {
 			ModelDatabase.Columns.Add(new ColumnEntity {
 				ColumnId = Guid.NewGuid(),
 				Header = table.Header,
+				Brush = table.Brush,
 				Board = ModelDatabase.GetBoard(table.BoardId)
 			});
 
@@ -23,6 +24,7 @@ namespace TaskBoard.Server.Database.Models.Editors {
 		public void Edit(Guid oldTableId, Column newTable) {
 			var column = ModelDatabase.GetColumn(oldTableId);
 			column.Header = newTable.Header;
+			column.Brush = newTable.Brush;
 
 			ModelDatabase.SaveChanges();
 		}

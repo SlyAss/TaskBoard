@@ -19,9 +19,10 @@ namespace TaskBoard.Client.Clients.Readers {
 			return SendRequest<Column[]>("GetColumnsFromBoard", parameters);
 		}
 
-		public Column[] GetWithUsingFilters(string header, Guid? boardId) {
+		public Column[] GetWithUsingFilters(string header, string brush, Guid? boardId) {
 			var parameters = GetDefaultParameters();
 			AddParameterIfNotNullOrEmpty(parameters, HttpParameters.ColumnHeader, header);
+			AddParameterIfNotNullOrEmpty(parameters, HttpParameters.ColumnBrush, brush);
 			AddParameterIfNotNullOrEmpty(parameters, HttpParameters.ColumnBoardId, boardId?.ToString());
 
 			return SendRequest<Column[]>("GetColumnsWithUsingFilters", parameters);

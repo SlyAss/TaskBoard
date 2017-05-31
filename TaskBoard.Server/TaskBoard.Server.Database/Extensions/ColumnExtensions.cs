@@ -14,6 +14,7 @@ namespace TaskBoard.Server.Database.Extensions {
 			return new Column {
 				ColumnId = column.ColumnId,
 				Header = column.Header,
+				Brush = column.Brush,
 				BoardId = column.BoardId
 			};
 		}

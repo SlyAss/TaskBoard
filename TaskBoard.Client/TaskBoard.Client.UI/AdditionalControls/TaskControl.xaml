@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="TaskBoard.Client.UI.AdditionalControls.TaskControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 BorderThickness="10,1,1,1" Margin="5"
+			 Height="200" Width="200">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="6*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="15*" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Name="TextBlockHeader" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" FontSize="20" />
+
+		<Rectangle Grid.Row="1" Fill="Silver" Height="1" />
+
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0" Name="TextBlockDescription" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" />
+
+			<Grid Grid.Column="1">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<StackPanel Grid.Row="1">
+					<Label Content="Ветка" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+					<Label Name="LabelBranch" HorizontalAlignment="Left" />
+				</StackPanel>
+
+				<StackPanel Grid.Row="2">
+					<Label Content="Состояние" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+					<Label Name="LabelState" HorizontalAlignment="Left" />
+				</StackPanel>
+
+				<StackPanel Grid.Row="3">
+					<Label Content="Приоритет" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+					<Label Name="LabelPriority" HorizontalAlignment="Left" />
+				</StackPanel>
+			</Grid>
+		</Grid>
+		<!--<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="5*" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="3*" />
+		</Grid.ColumnDefinitions>
+		
+		<Grid Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="2*" />
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="0" Name="TextBlockHeader" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" FontSize="20" />
+			<Rectangle Grid.Row="1" Fill="Silver" Height="1"  />
+			<TextBlock Grid.Row="2" Name="TextBlockDescription" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" />
+		</Grid>
+		
+		<Rectangle Grid.Column="1" Fill="Silver" Width="1"  />
+		
+		<Grid Grid.Column="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<StackPanel Grid.Row="1">
+				<Label Content="Ветка" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+				<Label Name="LabelBranch" HorizontalAlignment="Left" />
+			</StackPanel>
+
+			<StackPanel Grid.Row="2">
+				<Label Content="Состояние" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+				<Label Name="LabelState" HorizontalAlignment="Left" />
+			</StackPanel>
+
+			<StackPanel Grid.Row="3">
+				<Label Content="Приоритет" HorizontalContentAlignment="Center" Background="DodgerBlue" />
+				<Label Name="LabelPriority" HorizontalAlignment="Left" />
+			</StackPanel>
+		</Grid>-->
+	</Grid>
+</UserControl>

@@ -13,6 +13,9 @@ namespace TaskBoard.Server.Database.Entities {
 		[Required, MaxLength(64), Index("IX_ColumnUniques", 1, IsUnique = true)]
 		public string Header { get; set; }
 
+		[Required, MaxLength(10)]
+		public string Brush { get; set; }
+
 		[Required, Index("IX_ColumnUniques", 2, IsUnique = true)]
 		public Guid BoardId { get; set; }
 

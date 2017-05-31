@@ -6,6 +6,6 @@ namespace TaskBoard.Common.Database.Readers {
 
 	public interface IDatabaseColumnReader : IDatabaseReader<Column> {
 		Column[] GetFromBoard(Guid boardId);
-		Column[] GetWithUsingFilters(string header, Guid? boardId);
+		Column[] GetWithUsingFilters(string header, string brush, Guid? boardId);
 	}
 }

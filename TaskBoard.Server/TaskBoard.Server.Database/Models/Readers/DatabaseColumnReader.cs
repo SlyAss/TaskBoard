@@ -20,9 +20,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Columns.Where(column => column.BoardId == boardId).ToTables();
 		}
 
-		public Column[] GetWithUsingFilters(string header, Guid? boardId) {
+		public Column[] GetWithUsingFilters(string header, string brush, Guid? boardId) {
 			IQueryable<ColumnEntity> columns = ModelDatabase.Columns;
 			UseFilter(header != null, ref columns, column => column.Header.Contains(header));
+			UseFilter(brush != null, ref columns, column => column.Brush == brush);
 			UseFilter(boardId != null, ref columns, column => column.ColumnId == boardId.Value);
 
 			return columns.ToTables();

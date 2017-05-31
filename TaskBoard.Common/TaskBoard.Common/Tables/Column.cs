@@ -12,6 +12,9 @@ namespace TaskBoard.Common.Tables {
 		[HeaderColumn("Заголовок")]
 		public string Header { get; set; }
 
+		[HeaderColumn("Цвет задач")]
+		public string Brush { get; set; }
+
 		[HeaderColumn("Id доски")]
 		public Guid BoardId { get; set; }
 	}

@@ -10,6 +10,7 @@
 
 		public const string ColumnId = "ColumnId";
 		public const string ColumnHeader = "ColumnHeader";
+		public const string ColumnBrush = "ColumnBrush";
 		public const string ColumnBoardId = "ColumnBoardId";
 
 		public const string CommentId = "CommentId";

@@ -1,4 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
+using TaskBoard.Client.UI.AdditionalControls;
 using TaskBoard.Client.UI.AdditionalWindows;
 
 namespace TaskBoard.Client.UI {
@@ -13,6 +18,41 @@ namespace TaskBoard.Client.UI {
 			clientUiConfiguration = ClientUiConfiguration.ReadConfiguration();
 			LoadHttpClientProviderSettings(clientUiConfiguration);
 			CreateMenuAuthorization();
+
+			var stackPanel = new StackPanel {
+				Orientation = Orientation.Horizontal,
+				Children = {
+					new StackPanel {
+						Children = {
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
+						}
+					},
+					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
+					new StackPanel {
+						Children = {
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
+						}
+					},
+					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
+					new StackPanel {
+						Children = {
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.DarkGreen) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+						}
+					},
+					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
+					new StackPanel {
+						Children = {
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Blue) { Height = 225, Width = 225, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+						}
+					}
+				}
+			};
+
+			//var taskControl = new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First()) { Height = 200, Width = 200, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
+			Grid.SetColumn(stackPanel, 1);
+			Grid1.Children.Add(stackPanel);
 		}
 		private void LoadHttpClientProviderSettings(ClientUiConfiguration configuration) {
 			CommonMethods.SafeRunMethod.WithoutReturn(() => {
