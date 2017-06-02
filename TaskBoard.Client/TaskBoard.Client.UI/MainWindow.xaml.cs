@@ -19,38 +19,12 @@ namespace TaskBoard.Client.UI {
 			LoadHttpClientProviderSettings(clientUiConfiguration);
 			CreateMenuAuthorization();
 
-			var stackPanel = new StackPanel {
-				Orientation = Orientation.Horizontal,
-				Children = {
-					new StackPanel {
-						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
-						}
-					},
-					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
-					new StackPanel {
-						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
-						}
-					},
-					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
-					new StackPanel {
-						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.DarkGreen, "Vladimir") {HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-						}
-					},
-					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
-					new StackPanel {
-						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Blue, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-						}
-					}
-				}
-			};
+			var boardId = httpClientProvider.GetDatabaseBoardReader().GetAllIds().First();
 
-			//var taskControl = new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First()) { Height = 200, Width = 200, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
+			var stackPanel = new StackPanel { Orientation = Orientation.Horizontal };
+			foreach (var columnControl in httpClientProvider.GetDatabaseColumnReader().GetIdsFromBoard(boardId).Select(columnId => new ColumnControl(httpClientProvider, columnId)))
+				stackPanel.Children.Add(columnControl);
+
 			Grid.SetColumn(stackPanel, 1);
 			Grid1.Children.Add(stackPanel);
 		}

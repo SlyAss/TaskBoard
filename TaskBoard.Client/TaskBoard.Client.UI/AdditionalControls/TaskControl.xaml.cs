@@ -1,10 +1,12 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
 using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Client.UI.AdditionalControls {
 	public partial class TaskControl {
 		public TaskControl(Task task, Brush taskControlBrush, string developerName) {
 			InitializeComponent();
+			HorizontalAlignment = HorizontalAlignment.Center;
 
 			BorderBrush = taskControlBrush;
 			TextBlockHeader.Text = task.Header;

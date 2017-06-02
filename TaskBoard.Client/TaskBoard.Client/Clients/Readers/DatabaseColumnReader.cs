@@ -28,7 +28,7 @@ namespace TaskBoard.Client.Clients.Readers {
 			var parameters = GetDefaultParameters();
 			parameters[HttpParameters.ColumnBoardId] = boardId.ToString();
 
-			return SendRequest<Guid[]>("GetIdsColumnsFromBoard", parameters);
+			return SendRequest<Guid[]>("GetColumnIdsFromBoard", parameters);
 		}
 
 		public Column[] GetFromBoard(Guid boardId) {

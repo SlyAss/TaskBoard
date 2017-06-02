@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Media;
 
 namespace TaskBoard.Client.UI.AdditionalControls {
 	public partial class ColumnControl {
@@ -11,10 +14,10 @@ namespace TaskBoard.Client.UI.AdditionalControls {
 			var column = httpClientProvider.GetDatabaseColumnReader().GetById(columnId);
 
 			LabelColumnHeader.Content = column.Header;
-
-			//foreach (var VARIABLE in httpClientProvider.GetDatabaseTaskReader().GetIF) {
-				
-			//}
+			foreach (var task in httpClientProvider.GetDatabaseTaskReader().GetFromColumn(column.BoardId, columnId)) {
+				var developerName = task.DeveloperId != null ? httpClientProvider.GetDatabaseUserReader().GetById(task.DeveloperId.Value).Login : string.Empty;
+				StackPanelTaskControls.Children.Add(new TaskControl(task, (Brush)new BrushConverter().ConvertFromString(column.Brush), developerName));
+			}
 		}
 	}
 }
