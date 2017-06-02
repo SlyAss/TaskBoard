@@ -7,6 +7,8 @@ using TaskBoard.Common.Tables;
 using TaskBoard.Server.AdditionalObjects;
 
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.TaskReads {
+	// ReSharper disable UnusedMember.Global
+
 	public class GetTaskByIdFunction : HttpProtectedFunctionWithReturn<Task> {
 		public override string NameOfCalledMethod => "GetTaskById";
 		protected override AccessType RequiredAccessType => AccessType.UserRead;

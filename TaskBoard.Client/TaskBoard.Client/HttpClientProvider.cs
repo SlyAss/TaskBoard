@@ -56,6 +56,9 @@ namespace TaskBoard.Client {
 		public IDatabaseUserReader GetDatabaseUserReader() {
 			return GetClient("DatabaseUserReader", () => new DatabaseUserReader(httpClientParameters));
 		}
+		public IDatabaseUserReaderAsAdmin GetDatabaseUserReaderAsAdmin() {
+			return GetClient("DatabaseUserReaderAsAdmin", () => new DatabaseUserReaderAsAdmin(httpClientParameters));
+		}
 
 		private TClient GetClient<TClient>(string clientName, Func<TClient> createClient) where TClient : BaseHttpClient {
 			return (TClient)hashedClients.GetOrAdd(clientName, name => createClient());

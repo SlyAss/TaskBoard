@@ -3,7 +3,7 @@ using TaskBoard.Server.AdditionalObjects;
 using TaskBoard.Server.Extensions;
 
 namespace TaskBoard.Server.Functions.NonProtected {
-	// ReSharper disable UnusedMember.Global
+	// ReSharper disable UnusedParameter.Global
 
 	public abstract class HttpFunctionWithoutReturn : IHttpFunction {
 		public abstract string NameOfCalledMethod { get; }
