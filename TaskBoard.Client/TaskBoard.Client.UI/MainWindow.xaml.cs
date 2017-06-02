@@ -24,27 +24,27 @@ namespace TaskBoard.Client.UI {
 				Children = {
 					new StackPanel {
 						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Firebrick, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
 						}
 					},
 					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
 					new StackPanel {
 						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Yellow, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }
 						}
 					},
 					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
 					new StackPanel {
 						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.DarkGreen) {HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.DarkGreen, "Vladimir") {HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
 						}
 					},
 					new Rectangle { Width = 1, Fill = Brushes.DarkGray },
 					new StackPanel {
 						Children = {
-							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Blue) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
+							new TaskControl(httpClientProvider.GetDatabaseTaskReader().GetAll().First(), Brushes.Blue, "Vladimir") { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top },
 						}
 					}
 				}

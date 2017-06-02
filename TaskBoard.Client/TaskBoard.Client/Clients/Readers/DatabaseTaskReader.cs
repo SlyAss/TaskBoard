@@ -39,6 +39,22 @@ namespace TaskBoard.Client.Clients.Readers {
 			return SendRequest<Task[]>("GetTasksFromBoard", parameters);
 		}
 
+		public Guid[] GetIdsFromColumn(Guid boardId, Guid columnId) {
+			var parameters = GetDefaultParameters();
+			parameters[HttpParameters.TaskBoardId] = boardId.ToString();
+			parameters[HttpParameters.TaskColumnId] = columnId.ToString();
+
+			return SendRequest<Guid[]>("GetTaskIdsFromColumn", parameters);
+		}
+
+		public Task[] GetFromColumn(Guid boardId, Guid columnId) {
+			var parameters = GetDefaultParameters();
+			parameters[HttpParameters.TaskBoardId] = boardId.ToString();
+			parameters[HttpParameters.TaskColumnId] = columnId.ToString();
+
+			return SendRequest<Task[]>("GetTasksFromColumn", parameters);
+		}
+
 		public Guid[] GetIdsWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId) {
 			return SendRequest<Guid[]>("GetTaskIdsWithUsingFilters", CreateParametersForUsingFilters(header, description, branch, state, priority, developerId, reviewerId, columnId, boardId));
 		}

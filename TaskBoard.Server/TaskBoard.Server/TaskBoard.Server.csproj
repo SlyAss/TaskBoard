@@ -106,9 +106,11 @@
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTaskIdsFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTaskByIdFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTaskIdsFromBoardFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTaskIdsFromColumnFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTaskIdsWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksFromBoardFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetAllTasksFunction.cs" />
+    <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksFromColumnFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\TaskReads\GetTasksWithUsingFiltersFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\UserReadsAsAdmin\GetAllUserIdsAsAdminFunction.cs" />
     <Compile Include="Functions\Protected\WithReturn\Database\UserReadsAsAdmin\GetAllUsersAsAdminFunction.cs" />

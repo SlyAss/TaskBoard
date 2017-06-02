@@ -33,6 +33,14 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId).ToTables();
 		}
 
+		public Guid[] GetIdsFromColumn(Guid boardId, Guid columnId) {
+			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId && task.ColumnId == columnId).Select(task => task.TaskId).ToArray();
+		}
+
+		public Task[] GetFromColumn(Guid boardId, Guid columnId) {
+			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId && task.ColumnId == columnId).ToTables();
+		}
+
 		public Guid[] GetIdsWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId) {
 			return GetQueryWithUsingFilters(header, description, branch, state, priority, developerId, reviewerId, columnId, boardId).Select(task => task.TaskId).ToArray();
 		}
