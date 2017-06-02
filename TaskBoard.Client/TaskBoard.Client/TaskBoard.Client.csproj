@@ -49,6 +49,7 @@
     <Compile Include="Clients\Readers\DatabaseCommentReader.cs" />
     <Compile Include="Clients\Readers\DatabaseTaskReader.cs" />
     <Compile Include="Clients\Readers\DatabaseUserReader.cs" />
+    <Compile Include="Clients\Readers\DatabaseUserReaderAsAdmin.cs" />
     <Compile Include="HttpClientParameters.cs" />
     <Compile Include="HttpClientProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
