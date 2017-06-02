@@ -15,8 +15,8 @@ namespace TaskBoard.Server.Database.Models.Editors {
 				CommentId = Guid.NewGuid(),
 				Content = table.Content,
 				CreateDateTime = DateTime.Now,
-				User = ModelDatabase.GetUser(table.UserId),
-				Task = ModelDatabase.GetTask(table.TaskId)
+				UserId = ModelDatabase.GetUser(table.UserId).UserId,
+				TaskId = ModelDatabase.GetTask(table.TaskId).TaskId
 			});
 
 			ModelDatabase.SaveChanges();

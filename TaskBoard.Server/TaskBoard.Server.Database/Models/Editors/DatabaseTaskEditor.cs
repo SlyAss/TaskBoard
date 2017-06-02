@@ -15,14 +15,14 @@ namespace TaskBoard.Server.Database.Models.Editors {
 				TaskId = Guid.NewGuid(),
 				Header = table.Header,
 				Description = table.Description,
-				Branch = table.Branch,
+				Branch = string.IsNullOrEmpty(table.Branch) ? "-" : table.Branch,
 				State = table.State,
 				Priority = table.Priority,
 				CreateDateTime = DateTime.Now,
-				Developer = ModelDatabase.GetUser(table.DeveloperId),
-				Reviewer = ModelDatabase.GetUser(table.ReviewerId),
-				Column = ModelDatabase.GetColumn(table.ColumnId),
-				Board = ModelDatabase.GetBoard(table.BoardId)
+				DeveloperId = ModelDatabase.GetUser(table.DeveloperId)?.UserId,
+				ReviewerId = ModelDatabase.GetUser(table.ReviewerId)?.UserId,
+				ColumnId = ModelDatabase.GetColumn(table.ColumnId)?.ColumnId,
+				BoardId = ModelDatabase.GetBoard(table.BoardId).BoardId
 			});
 
 			ModelDatabase.SaveChanges();
@@ -32,7 +32,7 @@ namespace TaskBoard.Server.Database.Models.Editors {
 			var task = ModelDatabase.GetTask(oldTableId);
 			task.Header = newTable.Header;
 			task.Description = newTable.Description;
-			task.Branch = newTable.Branch;
+			task.Branch = string.IsNullOrEmpty(newTable.Branch) ? "-" : newTable.Branch;
 			task.State = newTable.State;
 			task.Priority = newTable.Priority;
 			task.DeveloperId = ModelDatabase.GetUser(newTable.DeveloperId)?.UserId;

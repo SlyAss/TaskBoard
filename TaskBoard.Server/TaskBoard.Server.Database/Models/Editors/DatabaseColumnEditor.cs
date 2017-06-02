@@ -15,7 +15,7 @@ namespace TaskBoard.Server.Database.Models.Editors {
 				ColumnId = Guid.NewGuid(),
 				Header = table.Header,
 				Brush = table.Brush,
-				Board = ModelDatabase.GetBoard(table.BoardId)
+				BoardId = ModelDatabase.GetBoard(table.BoardId).BoardId
 			});
 
 			ModelDatabase.SaveChanges();
