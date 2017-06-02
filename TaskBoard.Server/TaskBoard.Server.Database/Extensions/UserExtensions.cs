@@ -13,6 +13,16 @@ namespace TaskBoard.Server.Database.Extensions {
 		public static User ToTable(this UserEntity user) {
 			return new User {
 				UserId = user.UserId,
+				Login = user.Login
+			};
+		}
+
+		public static User[] ToTablesAsAdmin(this IEnumerable<UserEntity> users) {
+			return users.Select(ToTableAsAdmin).ToArray();
+		}
+		public static User ToTableAsAdmin(this UserEntity user) {
+			return new User {
+				UserId = user.UserId,
 				Login = user.Login,
 				Password = user.Password,
 				AccessType = user.AccessType

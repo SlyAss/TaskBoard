@@ -9,6 +9,13 @@ namespace TaskBoard.Client.Clients.Readers {
 		public DatabaseTaskReader(HttpClientParameters httpClientParameters) : base(httpClientParameters) {
 		}
 
+		public Task GetById(Guid id) {
+			var parameters = GetDefaultParameters();
+			parameters[HttpParameters.TaskId] = id.ToString();
+
+			return SendRequest<Task>("GetTaskById", parameters);
+		}
+
 		public Task[] GetAll() {
 			return SendRequest<Task[]>("GetAllTasks", GetDefaultParameters());
 		}

@@ -6,25 +6,23 @@ using TaskBoard.Server.Database.Entities;
 using TaskBoard.Server.Database.Extensions;
 
 namespace TaskBoard.Server.Database.Models.Readers {
-	// ReSharper disable UnusedMember.Global
-
-	public class DatabaseUserReader : DatabaseReader, IDatabaseUserReader {
-		public DatabaseUserReader(ModelDatabase modelDatabase) : base(modelDatabase) {
+	public class DatabaseUserReaderAsAdmin : DatabaseReader, IDatabaseUserReaderAsAdmin {
+		public DatabaseUserReaderAsAdmin(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
 		public User GetById(Guid id) {
-			return ModelDatabase.GetUser(id).ToTable();
+			return ModelDatabase.GetUser(id).ToTableAsAdmin();
 		}
 
 		public User[] GetAll() {
-			return ModelDatabase.Users.ToTables();
+			return ModelDatabase.Users.ToTablesAsAdmin();
 		}
 
 		public User[] GetWithUsingFilters(string login) {
 			IQueryable<UserEntity> users = ModelDatabase.Users;
 			UseFilter(login != null, ref users, user => user.Login.Contains(login));
 
-			return users.ToTables();
+			return users.ToTablesAsAdmin();
 		}
 	}
 }

@@ -12,6 +12,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 		public DatabaseColumnReader(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
+		public Column GetById(Guid id) {
+			return ModelDatabase.GetColumn(id).ToTable();
+		}
+
 		public Column[] GetAll() {
 			return ModelDatabase.Columns.ToTables();
 		}

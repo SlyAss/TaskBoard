@@ -12,6 +12,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 		public DatabaseCommentReader(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
+		public Comment GetById(Guid id) {
+			return ModelDatabase.GetComment(id).ToTable();
+		}
+
 		public Comment[] GetAll() {
 			return ModelDatabase.Comments.ToTables();
 		}

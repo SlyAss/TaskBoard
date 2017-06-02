@@ -66,6 +66,7 @@
     <Compile Include="Models\Readers\DatabaseTaskReader.cs" />
     <Compile Include="Models\Readers\DatabaseUserReader.cs" />
     <Compile Include="Models\Readers\DatabaseBoardReader.cs" />
+    <Compile Include="Models\Readers\DatabaseUserReaderAsAdmin.cs" />
     <Compile Include="NinjectDatabaseModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\BoardEntity.cs" />

@@ -13,6 +13,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 		public DatabaseTaskReader(ModelDatabase modelDatabase) : base(modelDatabase) {
 		}
 
+		public Task GetById(Guid id) {
+			return ModelDatabase.GetTask(id).ToTable();
+		}
+
 		public Task[] GetAll() {
 			return ModelDatabase.Tasks.ToTables();
 		}

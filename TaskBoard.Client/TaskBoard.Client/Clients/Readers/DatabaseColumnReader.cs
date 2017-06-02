@@ -8,6 +8,13 @@ namespace TaskBoard.Client.Clients.Readers {
 		public DatabaseColumnReader(HttpClientParameters httpClientParameters) : base(httpClientParameters) {
 		}
 
+		public Column GetById(Guid id) {
+			var parameters = GetDefaultParameters();
+			parameters[HttpParameters.ColumnId] = id.ToString();
+
+			return SendRequest<Column>("GetColumnById", parameters);
+		}
+
 		public Column[] GetAll() {
 			return SendRequest<Column[]>("GetAllColumns", GetDefaultParameters());
 		}

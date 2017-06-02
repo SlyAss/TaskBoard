@@ -9,7 +9,7 @@ namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.UserReads {
 
 	public class GetAllUsersFunction : HttpProtectedFunctionWithReturn<User[]> {
 		public override string NameOfCalledMethod => "GetAllUsers";
-		protected override AccessType RequiredAccessType => AccessType.AdminRead;
+		protected override AccessType RequiredAccessType => AccessType.UserRead;
 		private readonly IDatabaseUserReader databaseUserReader;
 
 		public GetAllUsersFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseUserReader databaseUserReader) : base(databaseAuthorizer) {

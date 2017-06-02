@@ -10,7 +10,7 @@ namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.UserReads {
 
 	public class GetUsersWithUsingFiltersFunction : HttpProtectedFunctionWithReturn<User[]> {
 		public override string NameOfCalledMethod => "GetUsersWithUsingFilters";
-		protected override AccessType RequiredAccessType => AccessType.AdminRead;
+		protected override AccessType RequiredAccessType => AccessType.UserRead;
 		private readonly IDatabaseUserReader databaseUserReader;
 
 		public GetUsersWithUsingFiltersFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseUserReader databaseUserReader) : base(databaseAuthorizer) {

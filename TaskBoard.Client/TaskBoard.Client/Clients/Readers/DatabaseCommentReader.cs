@@ -8,6 +8,13 @@ namespace TaskBoard.Client.Clients.Readers {
 		public DatabaseCommentReader(HttpClientParameters httpClientParameters) : base(httpClientParameters) {
 		}
 
+		public Comment GetById(Guid id) {
+			var parameters = GetDefaultParameters();
+			parameters[HttpParameters.CommentId] = id.ToString();
+
+			return SendRequest<Comment>("GetCommentById", parameters);
+		}
+
 		public Comment[] GetAll() {
 			return SendRequest<Comment[]>("GetAllComments", GetDefaultParameters());
 		}

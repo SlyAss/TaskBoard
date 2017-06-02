@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TaskBoard.Common.Database.Readers;
 using TaskBoard.Common.Tables;
 using TaskBoard.Server.Database.Entities;
@@ -9,6 +10,10 @@ namespace TaskBoard.Server.Database.Models.Readers {
 
 	public class DatabaseBoardReader : DatabaseReader, IDatabaseBoardReader {
 		public DatabaseBoardReader(ModelDatabase modelDatabase) : base(modelDatabase) {
+		}
+
+		public Board GetById(Guid id) {
+			return ModelDatabase.GetBoard(id).ToTable();
 		}
 
 		public Board[] GetAll() {

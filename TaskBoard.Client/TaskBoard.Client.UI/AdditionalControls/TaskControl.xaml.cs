@@ -7,11 +7,12 @@ namespace TaskBoard.Client.UI.AdditionalControls {
 			InitializeComponent();
 			
 			BorderBrush = taskControlBrush;
-			TextBlockHeader.Text = "Это очень-очень-очень-очень-очень-очень-очень длинное название"; //task.Header;
+			TextBlockHeader.Text = task.Header;
 			TextBlockDescription.Text = task.Description;
 			LabelBranch.Content = task.Branch;
 			LabelState.Content = task.State;
 			LabelPriority.Content = task.Priority;
+			LabelDeveloperName.Content = "Vladimir";
 		}
 	}
 }
