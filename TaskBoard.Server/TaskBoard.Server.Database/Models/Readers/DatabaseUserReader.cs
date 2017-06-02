@@ -16,15 +16,27 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.GetUser(id).ToTable();
 		}
 
+		public Guid[] GetAllIds() {
+			return ModelDatabase.Users.Select(user => user.UserId).ToArray();
+		}
+
 		public User[] GetAll() {
 			return ModelDatabase.Users.ToTables();
 		}
 
+		public Guid[] GetIdsWithUsingFilters(string login) {
+			return GetQueryWithUsingFilters(login).Select(user => user.UserId).ToArray();
+		}
+
 		public User[] GetWithUsingFilters(string login) {
+			return GetQueryWithUsingFilters(login).ToTables();
+		}
+
+		private IQueryable<UserEntity> GetQueryWithUsingFilters(string login) {
 			IQueryable<UserEntity> users = ModelDatabase.Users;
 			UseFilter(login != null, ref users, user => user.Login.Contains(login));
 
-			return users.ToTables();
+			return users;
 		}
 	}
 }

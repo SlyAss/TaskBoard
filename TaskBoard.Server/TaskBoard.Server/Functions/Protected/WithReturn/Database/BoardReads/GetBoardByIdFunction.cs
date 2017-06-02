@@ -9,7 +9,7 @@ using TaskBoard.Server.AdditionalObjects;
 namespace TaskBoard.Server.Functions.Protected.WithReturn.Database.BoardReads {
 	public class GetBoardByIdFunction : HttpProtectedFunctionWithReturn<Board> {
 		public override string NameOfCalledMethod => "GetBoardById";
-		protected override AccessType RequiredAccessType =>AccessType.UserRead;
+		protected override AccessType RequiredAccessType => AccessType.UserRead;
 		private readonly IDatabaseBoardReader databaseBoardReader;
 
 		public GetBoardByIdFunction(IDatabaseAuthorizer databaseAuthorizer, IDatabaseBoardReader databaseBoardReader) : base(databaseAuthorizer) {

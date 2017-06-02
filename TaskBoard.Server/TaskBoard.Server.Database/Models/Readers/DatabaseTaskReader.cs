@@ -17,15 +17,31 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			return ModelDatabase.GetTask(id).ToTable();
 		}
 
+		public Guid[] GetAllIds() {
+			return ModelDatabase.Tasks.Select(task => task.TaskId).ToArray();
+		}
+
 		public Task[] GetAll() {
 			return ModelDatabase.Tasks.ToTables();
+		}
+
+		public Guid[] GetIdsFromBoard(Guid boardId) {
+			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId).Select(task => task.TaskId).ToArray();
 		}
 
 		public Task[] GetFromBoard(Guid boardId) {
 			return ModelDatabase.Tasks.Where(task => task.BoardId == boardId).ToTables();
 		}
 
+		public Guid[] GetIdsWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId) {
+			return GetQueryWithUsingFilters(header, description, branch, state, priority, developerId, reviewerId, columnId, boardId).Select(task => task.TaskId).ToArray();
+		}
+
 		public Task[] GetWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId) {
+			return GetQueryWithUsingFilters(header, description, branch, state, priority, developerId, reviewerId, columnId, boardId).ToTables();
+		}
+
+		private IQueryable<TaskEntity> GetQueryWithUsingFilters(string header, string description, string branch, State? state, Priority? priority, Guid? developerId, Guid? reviewerId, Guid? columnId, Guid? boardId) {
 			IQueryable<TaskEntity> tasks = ModelDatabase.Tasks;
 			UseFilter(header != null, ref tasks, task => task.Header.Contains(header));
 			UseFilter(description != null, ref tasks, task => task.Description.Contains(description));
@@ -37,7 +53,7 @@ namespace TaskBoard.Server.Database.Models.Readers {
 			UseFilter(columnId != null, ref tasks, task => task.ColumnId == columnId);
 			UseFilter(boardId != null, ref tasks, task => task.BoardId == boardId);
 
-			return tasks.ToTables();
+			return tasks;
 		}
 	}
 }

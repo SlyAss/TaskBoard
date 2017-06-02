@@ -5,6 +5,7 @@ namespace TaskBoard.Common.Database {
 
 	public interface IDatabaseReader<out TTable> {
 		TTable GetById(Guid id);
+		Guid[] GetAllIds();
 		TTable[] GetAll();
 	}
 }
