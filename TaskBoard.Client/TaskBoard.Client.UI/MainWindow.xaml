@@ -1,20 +1,37 @@
 ﻿<Window x:Class="TaskBoard.Client.UI.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:controls="clr-namespace:TaskBoard.Client.UI.Controls"
 		Title="MainWindow" Height="600" Width="1200">
 	<Grid>
-		<Grid Name="Grid1">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0">
 			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
-			<Menu Grid.Column="0" HorizontalAlignment="Left">
-				<MenuItem Name="MenuItemSettings" Header="Настройки" HorizontalAlignment="Right" />
+			<Menu Grid.Column="0">
+				<MenuItem Header="Настройки" Click="MenuItemSettings_OnClick" VerticalContentAlignment="Center" Height="26" />
 			</Menu>
 
-			<Menu Grid.Column="2" Name="MenuAuthorization" HorizontalAlignment="Right" />
+			<Rectangle Grid.Column="1" Width="1" Fill="Silver" />
+
+			<Label Grid.Column="2" Content="Доска: " Background="#FFF0F0F0" />
+			<ComboBox Grid.Column="3" Name="ComboBoxBoards" Text="qwe" VerticalContentAlignment="Center"
+					  DropDownOpened="ComboBoxBoards_OnDropDownOpened" SelectionChanged="ComboBoxBoards_OnSelectionChanged" />
+
+			<Menu Grid.Column="5" Name="MenuAuthorization" />
 		</Grid>
+
+		<controls:BoardControl Grid.Row="1" x:Name="ThisBoardControl" />
 	</Grid>
 </Window>

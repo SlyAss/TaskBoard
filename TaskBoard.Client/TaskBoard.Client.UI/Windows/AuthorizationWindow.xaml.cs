@@ -2,7 +2,7 @@
 using System.Windows;
 using TaskBoard.Client.Clients;
 
-namespace TaskBoard.Client.UI.AdditionalWindows {
+namespace TaskBoard.Client.UI.Windows {
 	public partial class AuthorizationWindow : IWindowWithChecking {
 		private readonly ClientUiConfiguration clientUiConfiguration;
 		private readonly ParameretsClient parameretsClient;

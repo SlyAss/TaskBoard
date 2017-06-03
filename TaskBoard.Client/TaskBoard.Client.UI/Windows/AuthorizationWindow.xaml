@@ -1,4 +1,4 @@
-﻿<Window x:Class="TaskBoard.Client.UI.AdditionalWindows.AuthorizationWindow"
+﻿<Window x:Class="TaskBoard.Client.UI.Windows.AuthorizationWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Title="AuthorizationWindow" Width="350" SizeToContent="Height">

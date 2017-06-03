@@ -1,17 +1,25 @@
-﻿<UserControl x:Class="TaskBoard.Client.UI.AdditionalControls.TaskControl"
+﻿<UserControl x:Class="TaskBoard.Client.UI.Controls.TaskControl"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 BorderThickness="10,1,1,1" Margin="5"
-			 Height="222" Width="222">
+			 Height="212" Width="222">
 	<Grid>
+		<Grid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Добавить задачу" />
+				<MenuItem Header="Редактировать задачу" />
+				<MenuItem Header="Удалить задачу" />
+			</ContextMenu>
+		</Grid.ContextMenu>
+
 		<Grid.RowDefinitions>
-			<RowDefinition Height="6*" />
+			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="15*" />
+			<RowDefinition Height="3*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Name="TextBlockHeader" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" FontSize="20" />
+		<TextBlock Grid.Row="0" Name="TextBlockHeader" TextWrapping="Wrap" Margin="3" FontSize="16" />
 
 		<Rectangle Grid.Row="1" Fill="Silver" Height="1" />
 
@@ -28,9 +36,9 @@
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
-				
-				<TextBlock Grid.Row="0" Name="TextBlockDescription" VerticalAlignment="Top" TextWrapping="Wrap" Margin="3" />
-				
+
+				<TextBlock Grid.Row="0" Name="TextBlockDescription" TextWrapping="Wrap" Margin="3" />
+
 				<Rectangle Grid.Row="1" Fill="Silver" Height="1" />
 
 				<Grid Grid.Row="2">
@@ -38,12 +46,12 @@
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-					
+
 					<Label Grid.Column="0" Content="Разработчик:" Background="Bisque" />
 					<Label Grid.Column="1" Name="LabelDeveloperName" />
 				</Grid>
 			</Grid>
-			
+
 			<Rectangle Grid.Column="1" Fill="Silver" Width="1" />
 
 			<Grid Grid.Column="2">

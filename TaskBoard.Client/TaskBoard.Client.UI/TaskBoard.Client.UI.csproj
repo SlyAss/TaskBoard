@@ -51,19 +51,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AdditionalControls\ColumnControl.xaml">
+    <Page Include="Controls\BoardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdditionalControls\TaskControl.xaml">
+    <Page Include="Controls\ColumnControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdditionalWindows\AuthorizationWindow.xaml">
+    <Page Include="Controls\TaskControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdditionalWindows\SettingsWindow.xaml">
+    <Page Include="Windows\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,16 +75,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AdditionalControls\ColumnControl.xaml.cs">
+    <Compile Include="Controls\BoardControl.xaml.cs">
+      <DependentUpon>BoardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColumnControl.xaml.cs">
       <DependentUpon>ColumnControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdditionalControls\TaskControl.xaml.cs">
+    <Compile Include="Controls\TaskControl.xaml.cs">
       <DependentUpon>TaskControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdditionalWindows\AuthorizationWindow.xaml.cs">
+    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdditionalWindows\SettingsWindow.xaml.cs">
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">

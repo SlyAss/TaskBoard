@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using TaskBoard.Common.Extensions;
 
 namespace TaskBoard.Client.UI {
 	public static class CommonMethods {
@@ -13,11 +14,27 @@ namespace TaskBoard.Client.UI {
 			public static bool FieldIsEmpty(PasswordBox passwordBox) {
 				return string.IsNullOrEmpty(passwordBox.Password);
 			}
+
+			public static bool FieldIsNotNumber(TextBox textBox) {
+				return !int.TryParse(textBox.Text, out int _);
+			}
+
+			public static bool FieldNumberIsNotPositive(TextBox textBox) {
+				return textBox.Text.ToInt() <= 0;
+			}
 		}
 
 		public static class GenerateMessage {
 			public static string FieldIsEmpty(Label label) {
 				return $"Необходимо заполнить поле '{(string)label.Content}'";
+			}
+
+			public static string FieldIsNotNumber(Label label) {
+				return $"Поле '{(string)label.Content}' должно быть числом";
+			}
+
+			public static string FieldNumberIsNotPositive(Label label) {
+				return $"Поле '{(string)label.Content}' должно быть положительным числом";
 			}
 		}
 
@@ -54,13 +71,13 @@ namespace TaskBoard.Client.UI {
 		}
 
 		public static class SafeRunMethod {
-			public static TKey WithReturn<TKey>(Func<TKey> action, bool showErrors, string successfulMessage = null) {
+			public static TKey WithReturn<TKey>(Func<TKey> action, bool showErrors = true, string successfulMessage = null) {
 				var result = default(TKey);
 				RunMethod(() => result = action(), showErrors, successfulMessage);
 				return result;
 			}
 
-			public static void WithoutReturn(Action action, bool showErrors, string successfulMessage = null) {
+			public static void WithoutReturn(Action action, bool showErrors = true, string successfulMessage = null) {
 				RunMethod(action, showErrors, successfulMessage);
 			}
 
