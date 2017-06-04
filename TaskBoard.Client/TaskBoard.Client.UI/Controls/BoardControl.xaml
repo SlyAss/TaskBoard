@@ -3,14 +3,5 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 		<StackPanel Name="StackPanelColumnControls" Orientation="Horizontal" />
-		<!--<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
-
-			<Label Grid.Row="0" Name="LabelBoardName" HorizontalContentAlignment="Center" BorderThickness="3,2,3,2" BorderBrush="Silver" FontSize="18" />
-			<StackPanel Grid.Row="1" Name="StackPanelColumnControls" Orientation="Horizontal" />
-		</Grid>-->
 	</ScrollViewer>
 </UserControl>

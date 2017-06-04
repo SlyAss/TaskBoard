@@ -5,7 +5,7 @@ using System.Windows;
 using TaskBoard.Common.Extensions;
 
 namespace TaskBoard.Client.UI.Windows {
-	public partial class SettingsWindow {
+	public partial class SettingsWindow : IWindowWithChecking {
 		private readonly HttpClientProvider httpClientProvider;
 		private readonly ClientUiConfiguration clientConfiguration;
 
@@ -23,7 +23,7 @@ namespace TaskBoard.Client.UI.Windows {
 			return configuration;
 		}
 
-		private IEnumerable<string> GetErrors() {
+		public IEnumerable<string> GetErrors() {
 			if (CommonMethods.Check.FieldIsEmpty(TextBoxServerAddress))
 				yield return CommonMethods.GenerateMessage.FieldIsEmpty(LabelServerAddress);
 
@@ -35,30 +35,21 @@ namespace TaskBoard.Client.UI.Windows {
 				yield return CommonMethods.GenerateMessage.FieldNumberIsNotPositive(LabelRequestTimeoutMs);
 		}
 
+		public void ActionBeforeTrueDialogResultClose() {
+			httpClientProvider.GetParameretsClient().SetServerAddress(TextBoxServerAddress.Text, TextBoxRequestTimeoutMs.Text.ToInt());
+
+			clientConfiguration.ServerAddress = httpClientProvider.ServerAddress;
+			clientConfiguration.TimeoutMs = httpClientProvider.TimeoutMs;
+			clientConfiguration.WriteConfiguration();
+		}
+		public void ActionBeforeFalseDialogResultClose() {
+		}
+
 		private void ButtonOk_OnClick(object sender, RoutedEventArgs e) {
-			var errors = GetErrors().ToArray();
-			if (errors.Any()) {
-				CommonMethods.ShowMessageBox.Error(string.Join("\n", errors));
-				return;
-			}
-
-			try {
-				httpClientProvider.GetParameretsClient().SetServerAddress(TextBoxServerAddress.Text, TextBoxRequestTimeoutMs.Text.ToInt());
-
-				clientConfiguration.ServerAddress = httpClientProvider.ServerAddress;
-				clientConfiguration.TimeoutMs = httpClientProvider.TimeoutMs;
-				clientConfiguration.WriteConfiguration();
-
-				DialogResult = true;
-				Close();
-			}
-			catch (Exception exception) {
-				CommonMethods.ShowMessageBox.Error(exception.Message);
-			}
+			CommonMethods.CloseWindow.TrueDialogResult(this);
 		}
 		private void ButtonCancel_OnClick(object sender, RoutedEventArgs e) {
-			DialogResult = false;
-			Close();
+			CommonMethods.CloseWindow.FalseDialogResult(this);
 		}
 	}
 }

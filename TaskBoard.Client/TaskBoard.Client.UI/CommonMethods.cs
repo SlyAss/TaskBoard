@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using TaskBoard.Common.Database;
 using TaskBoard.Common.Extensions;
 
 namespace TaskBoard.Client.UI {
@@ -22,6 +26,14 @@ namespace TaskBoard.Client.UI {
 			public static bool FieldNumberIsNotPositive(TextBox textBox) {
 				return textBox.Text.ToInt() <= 0;
 			}
+
+			public static bool FieldIsNotBrush(TextBox textBox) {
+				return !Regex.IsMatch(textBox.Text, @"#[0-9A-F]{8}");
+			}
+
+			public static bool FieldIsEmpty(ComboBox comboBox) {
+				return string.IsNullOrEmpty((string)comboBox.SelectedItem);
+			}
 		}
 
 		public static class GenerateMessage {
@@ -35,6 +47,71 @@ namespace TaskBoard.Client.UI {
 
 			public static string FieldNumberIsNotPositive(Label label) {
 				return $"Поле '{(string)label.Content}' должно быть положительным числом";
+			}
+
+			public static string FieldIsNotBrush(Label label) {
+				return $"Поле '{(string)label.Content}' должно содержать код цвета";
+			}
+		}
+
+		public static class Set {
+			public static void ReadOnly(Label label, bool isReadOnly) {
+				label.Foreground = isReadOnly ? Brushes.DodgerBlue : Brushes.Silver;
+			}
+
+			public static void ReadOnly(TextBox textBox, bool isReadOnly) {
+				textBox.IsReadOnly = isReadOnly;
+			}
+
+			public static void ReadOnly(PasswordBox passwordBox, bool isReadOnly) {
+				passwordBox.IsEnabled = !isReadOnly;
+			}
+
+			public static void ReadOnly(ComboBox comboBox, bool isReadOnly) {
+				comboBox.IsReadOnly = isReadOnly;
+			}
+
+			public static void ReadOnly(CheckBox checkBox, bool isReadOnly) {
+				checkBox.IsEnabled = !isReadOnly;
+			}
+
+			public static void ReadOnly(DatePicker datePicker, bool isReadOnly) {
+				datePicker.IsEnabled = !isReadOnly;
+			}
+		}
+
+		public static class WorkWithTables {
+			public static void View<TTable>(TTable selectedItem, Func<TTable, bool, Window> getWindow) {
+				if (selectedItem == null)
+					return;
+
+				getWindow(selectedItem, true).ShowDialog();
+			}
+
+			public static void Add<TTable, TWindow>(Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor) where TWindow : Window, IWindowWithChecking<TTable> {
+				var window = getWindow(default(TTable), false);
+				if (window.ShowDialog() != true)
+					return;
+
+				SafeRunMethod.WithoutReturn(() => databaseEditor.Add(window.Table));
+			}
+
+			public static void Edit<TTable, TWindow>(TTable selectedItem, Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId) where TWindow : Window, IWindowWithChecking<TTable> {
+				if (selectedItem == null)
+					return;
+
+				var window = getWindow(selectedItem, false);
+				if (window.ShowDialog() != true)
+					return;
+
+				SafeRunMethod.WithoutReturn(() => databaseEditor.Edit(getId(selectedItem), window.Table));
+			}
+
+			public static void Delete<TTable>(TTable selectedItem, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId) {
+				if (selectedItem == null)
+					return;
+
+				SafeRunMethod.WithoutReturn(() => databaseEditor.Delete(getId(selectedItem)));
 			}
 		}
 
