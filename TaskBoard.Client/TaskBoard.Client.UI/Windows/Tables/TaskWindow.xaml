@@ -17,7 +17,7 @@
 					<ColumnDefinition Width="10" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
-				
+
 				<Grid Grid.Column="0">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -55,7 +55,7 @@
 					<Label Grid.Row="10" Grid.Column="0" Name="LabelTaskBoard" Content="Доска" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
 					<TextBox Grid.Row="10" Grid.Column="1" Name="TextBoxTaskBoard" VerticalContentAlignment="Center" />
 				</Grid>
-				
+
 				<Rectangle Grid.Column="2" Width="1" Fill="Silver" />
 
 				<Grid Grid.Column="4">

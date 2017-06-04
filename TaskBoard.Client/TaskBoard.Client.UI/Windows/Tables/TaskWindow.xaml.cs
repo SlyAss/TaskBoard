@@ -29,6 +29,7 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 			DatePickerTaskCreateDateTime.SelectedDate = task?.CreateDateTime ?? DateTime.Now;
 			ComboBoxTaskState.SelectedItem = task?.State.ToString() ?? default(State).ToString();
 			ComboBoxTaskPriority.SelectedItem = task?.Priority.ToString() ?? default(Priority).ToString();
+			TextBoxTaskBoard.Text = taskBoardName;
 
 			CommonMethods.Set.ReadOnly(LabelTaskHeader, isReadOnly);
 			CommonMethods.Set.ReadOnly(TextBoxTaskHeader, isReadOnly);
@@ -55,7 +56,6 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 
 			TextBoxTaskHeader.Text = task.Header;
 			TextBoxTaskDescription.Text = task.Description;
-			TextBoxTaskBoard.Text = taskBoardName;
 			TextBoxTaskBranch.Text = task.Branch;
 			if (task.DeveloperId != null)
 				ComboBoxTaskDeveloper.SelectedItem = userNames.First(userName => userName.Value == task.DeveloperId.Value).Key;

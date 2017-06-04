@@ -3,12 +3,12 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 BorderThickness="10,1,1,1" Margin="5"
 			 Height="212" Width="222">
-	<Grid>
+	<Grid MouseLeftButtonDown="ViewTask_OnClick">
 		<Grid.ContextMenu>
 			<ContextMenu>
-				<MenuItem Header="Добавить задачу" />
-				<MenuItem Header="Редактировать задачу" />
-				<MenuItem Header="Удалить задачу" />
+				<MenuItem Header="Добавить задачу" Click="MenuItemAddTask_OnClick" />
+				<MenuItem Header="Редактировать задачу" Click="MenuItemEditTask_OnClick" />
+				<MenuItem Header="Удалить задачу" Click="MenuItemDeleteTask_OnClick" />
 			</ContextMenu>
 		</Grid.ContextMenu>
 

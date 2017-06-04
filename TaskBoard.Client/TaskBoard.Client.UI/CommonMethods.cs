@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -9,6 +8,8 @@ using TaskBoard.Common.Database;
 using TaskBoard.Common.Extensions;
 
 namespace TaskBoard.Client.UI {
+	// ReSharper disable MemberCanBePrivate.Global
+
 	public static class CommonMethods {
 		public static class Check {
 			public static bool FieldIsEmpty(TextBox textBox) {
@@ -56,7 +57,7 @@ namespace TaskBoard.Client.UI {
 
 		public static class Set {
 			public static void ReadOnly(Label label, bool isReadOnly) {
-				label.Foreground = isReadOnly ? Brushes.DodgerBlue : Brushes.Silver;
+				label.Foreground = isReadOnly ? Brushes.Silver : Brushes.DodgerBlue;
 			}
 
 			public static void ReadOnly(TextBox textBox, bool isReadOnly) {
@@ -88,15 +89,18 @@ namespace TaskBoard.Client.UI {
 				getWindow(selectedItem, true).ShowDialog();
 			}
 
-			public static void Add<TTable, TWindow>(Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor) where TWindow : Window, IWindowWithChecking<TTable> {
+			public static void Add<TTable, TWindow>(Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor, Action actionAfterSuccess = null) where TWindow : Window, IWindowWithChecking<TTable> {
 				var window = getWindow(default(TTable), false);
 				if (window.ShowDialog() != true)
 					return;
 
-				SafeRunMethod.WithoutReturn(() => databaseEditor.Add(window.Table));
+				SafeRunMethod.WithoutReturn(() => {
+					databaseEditor.Add(window.Table);
+					actionAfterSuccess?.Invoke();
+				});
 			}
 
-			public static void Edit<TTable, TWindow>(TTable selectedItem, Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId) where TWindow : Window, IWindowWithChecking<TTable> {
+			public static void Edit<TTable, TWindow>(TTable selectedItem, Func<TTable, bool, TWindow> getWindow, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId, Action actionAfterSuccess = null) where TWindow : Window, IWindowWithChecking<TTable> {
 				if (selectedItem == null)
 					return;
 
@@ -104,14 +108,20 @@ namespace TaskBoard.Client.UI {
 				if (window.ShowDialog() != true)
 					return;
 
-				SafeRunMethod.WithoutReturn(() => databaseEditor.Edit(getId(selectedItem), window.Table));
+				SafeRunMethod.WithoutReturn(() => {
+					databaseEditor.Edit(getId(selectedItem), window.Table);
+					actionAfterSuccess?.Invoke();
+				});
 			}
 
-			public static void Delete<TTable>(TTable selectedItem, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId) {
+			public static void Delete<TTable>(TTable selectedItem, IDatabaseEditor<TTable> databaseEditor, Func<TTable, Guid> getId, Action actionAfterSuccess = null) {
 				if (selectedItem == null)
 					return;
 
-				SafeRunMethod.WithoutReturn(() => databaseEditor.Delete(getId(selectedItem)));
+				SafeRunMethod.WithoutReturn(() => {
+					databaseEditor.Delete(getId(selectedItem));
+					actionAfterSuccess?.Invoke();
+				});
 			}
 		}
 
@@ -137,7 +147,7 @@ namespace TaskBoard.Client.UI {
 					window.ActionBeforeTrueDialogResultClose();
 					window.DialogResult = true;
 					window.Close();
-				}, true);
+				});
 			}
 
 			public static void FalseDialogResult<TWindow>(TWindow window) where TWindow : Window, IWindowWithChecking {
