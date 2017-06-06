@@ -51,7 +51,7 @@ namespace TaskBoard.Client.UI {
 			}
 
 			public static string FieldIsNotBrush(Label label) {
-				return $"Поле '{(string)label.Content}' должно содержать код цвета";
+				return $"Поле '{(string)label.Content}' должно содержать код цвета в виде \"#AARRGGBB\"";
 			}
 		}
 

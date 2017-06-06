@@ -36,15 +36,15 @@ namespace TaskBoard.Client.UI.Controls {
 
 		private void ViewTask_OnClick(object sender, MouseButtonEventArgs e) {
 			var board = GetThisBoard();
-			CommonMethods.WorkWithTables.View(thisTask, (task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly));
+			CommonMethods.WorkWithTables.View(thisTask, (task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly));
 		}
 		private void MenuItemAddTask_OnClick(object sender, RoutedEventArgs e) {
 			var board = GetThisBoard();
-			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), () => AddTask?.Invoke(this, default(EventArgs)));
+			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), () => AddTask?.Invoke(this, default(EventArgs)));
 		}
 		private void MenuItemEditTask_OnClick(object sender, RoutedEventArgs e) {
 			var board = GetThisBoard();
-			CommonMethods.WorkWithTables.Edit(thisTask, (task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, () => EditTask?.Invoke(this, default(EventArgs)));
+			CommonMethods.WorkWithTables.Edit(thisTask, (task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, () => EditTask?.Invoke(this, default(EventArgs)));
 		}
 		private void MenuItemDeleteTask_OnClick(object sender, RoutedEventArgs e) {
 			CommonMethods.WorkWithTables.Delete(thisTask, httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, () => DeleteTask?.Invoke(this, default(EventArgs)));

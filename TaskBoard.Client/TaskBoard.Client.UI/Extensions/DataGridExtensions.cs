@@ -54,7 +54,7 @@ namespace TaskBoard.Client.UI.Extensions {
 				Header = header,
 				IsReadOnly = true,
 				Binding = new Binding(bindingName) {
-					StringFormat = "dd.MM.yyyy hh:mm:ss"
+					StringFormat = "dd.MM.yyyy HH:mm:ss"
 				}
 			};
 		}

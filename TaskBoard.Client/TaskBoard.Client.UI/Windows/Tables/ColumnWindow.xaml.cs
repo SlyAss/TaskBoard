@@ -36,7 +36,7 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 
 			if (CommonMethods.Check.FieldIsEmpty(TextBoxColumnBrush))
 				yield return CommonMethods.GenerateMessage.FieldIsEmpty(LabelColumnBrush);
-			if (CommonMethods.Check.FieldIsNotBrush(TextBoxColumnBrush))
+			else if (CommonMethods.Check.FieldIsNotBrush(TextBoxColumnBrush))
 				yield return CommonMethods.GenerateMessage.FieldIsNotBrush(LabelColumnBrush);
 
 			if (CommonMethods.Check.FieldIsEmpty(ComboBoxColumnBoard))

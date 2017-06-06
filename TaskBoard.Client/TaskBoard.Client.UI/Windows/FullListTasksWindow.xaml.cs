@@ -33,13 +33,13 @@ namespace TaskBoard.Client.UI.Windows {
 		}
 
 		private void DataGridTasks_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) {
-			CommonMethods.WorkWithTables.View(SelectedTask, (task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly));
+			CommonMethods.WorkWithTables.View(SelectedTask, (task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly));
 		}
 		private void MenuItemAddTask_OnClick(object sender, RoutedEventArgs e) {
-			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), ReloadDataGridTasksItemsSource);
+			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), ReloadDataGridTasksItemsSource);
 		}
 		private void MenuItemEditTask_OnClick(object sender, RoutedEventArgs e) {
-			CommonMethods.WorkWithTables.Edit(SelectedTask, (task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, ReloadDataGridTasksItemsSource);
+			CommonMethods.WorkWithTables.Edit(SelectedTask, (task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, ReloadDataGridTasksItemsSource);
 		}
 		private void MenuItemDeleteTask_OnClick(object sender, RoutedEventArgs e) {
 			CommonMethods.WorkWithTables.Delete(SelectedTask, httpClientProvider.GetDatabaseTaskEditor(), task => task.TaskId, ReloadDataGridTasksItemsSource);

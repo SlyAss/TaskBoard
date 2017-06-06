@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using TaskBoard.Common.Tables;
 
@@ -27,7 +26,8 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 		}
 
 		public IEnumerable<string> GetErrors() {
-			return Enumerable.Empty<string>();
+			if (CommonMethods.Check.FieldIsEmpty(TextBoxCommentContent))
+				yield return CommonMethods.GenerateMessage.FieldIsEmpty(LabelCommentContent);
 		}
 
 		public void ActionBeforeTrueDialogResultClose() {

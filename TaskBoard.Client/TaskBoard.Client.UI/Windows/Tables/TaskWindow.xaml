@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TaskBoard.Client.UI.Windows.Tables.TaskWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		Title="TaskWindow" Width="820" SizeToContent="Height">
+		Title="TaskWindow" Width="850" Height="350">
 	<Grid Margin="5">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
@@ -98,8 +98,22 @@
 				</Grid>
 			</ScrollViewer>
 
+			<Rectangle Grid.Column="2" Width="1" Fill="Silver" />
+
 			<ScrollViewer Grid.Column="4" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="5">
-				<Grid />
+				<Grid Name="GridCommects">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<StackPanel Grid.Row="0" Name="StackPanelComments" />
+					<Label Grid.Row="1" Content="Написать комментарий:" />
+					<TextBox Grid.Row="1" Name="TextBoxCommentContent" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="60" Margin="0,20,0,6" Grid.RowSpan="2" />
+					<Button Grid.Row="3" Content="Отправить" Click="ButtonSendComment_OnClick" HorizontalAlignment="Right" Padding="15,5,15,5" Margin="3,3,0,0" />
+				</Grid>
 			</ScrollViewer>
 		</Grid>
 

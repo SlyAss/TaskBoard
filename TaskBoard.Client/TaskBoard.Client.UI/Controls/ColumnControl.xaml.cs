@@ -52,7 +52,7 @@ namespace TaskBoard.Client.UI.Controls {
 		}
 		private void MenuItemAddTask_OnClick(object sender, RoutedEventArgs e) {
 			var board = CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseBoardReader().GetById(thisColumn.BoardId));
-			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), () => AddTask?.Invoke(this, default(EventArgs)));
+			CommonMethods.WorkWithTables.Add((task, isReadOnly) => new TaskWindow(httpClientProvider, task, GetUserNames(), GetColumnNames(), board.Name, board.BoardId, isReadOnly), httpClientProvider.GetDatabaseTaskEditor(), () => AddTask?.Invoke(this, default(EventArgs)));
 		}
 		private void MenuItemAddColumn_OnClick(object sender, RoutedEventArgs e) {
 			CommonMethods.WorkWithTables.Add((column, isReadOnly) => new ColumnWindow(column, GetBoardNames(), isReadOnly), httpClientProvider.GetDatabaseColumnEditor(), () => AddColumn?.Invoke(this, default(EventArgs)));

@@ -1,5 +1,39 @@
 ﻿<UserControl x:Class="TaskBoard.Client.UI.Controls.CommentControl"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Grid />
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 BorderThickness="1" BorderBrush="Silver"
+			 Height="100" Margin="0,0,0,5">
+	<Grid>
+		<Grid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Добавить комментарий" Click="MenuItemAddComment_OnClick" />
+				<MenuItem Header="Редактировать комментарий" Click="MenuItemEditComment_OnClick" />
+				<MenuItem Header="Удалить комментарий" Click="MenuItemDeleteComment_OnClick" />
+			</ContextMenu>
+		</Grid.ContextMenu>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<Label Grid.Column="1" Content="Автор:" />
+			<Label Grid.Column="2" Name="LabelUserName" />
+			<Rectangle Grid.Column="3" Width="1" Fill="Silver" />
+			<Label Grid.Column="4" Content="Время создания:" />
+			<Label Grid.Column="5" Name="LabelCreateDateTime" />
+		</Grid>
+
+		<TextBox Grid.Row="1" Name="TextBoxCommentContent" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Padding="5" BorderThickness="0,1,0,0" BorderBrush="Silver" IsReadOnly="True" />
+	</Grid>
 </UserControl>

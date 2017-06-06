@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using TaskBoard.Client.UI.Controls;
 using TaskBoard.Common.Enums;
 using TaskBoard.Common.Tables;
 
 namespace TaskBoard.Client.UI.Windows.Tables {
 	public partial class TaskWindow : IWindowWithChecking<Task> {
 		public Task Table { get; private set; }
+		private readonly HttpClientProvider httpClientProvider;
 		private readonly Dictionary<string, Guid> userNames;
 		private readonly Dictionary<string, Guid> columnNames;
 		private readonly Guid taskBoardId;
+		private readonly Task thisTask;
 
-		public TaskWindow(Task task, Dictionary<string, Guid> userNames, Dictionary<string, Guid> columnNames, string taskBoardName, Guid taskBoardId, bool isReadOnly) {
+		public TaskWindow(HttpClientProvider httpClientProvider, Task task, Dictionary<string, Guid> userNames, Dictionary<string, Guid> columnNames, string taskBoardName, Guid taskBoardId, bool isReadOnly) {
 			InitializeComponent();
+			this.httpClientProvider = httpClientProvider;
 			this.userNames = userNames;
 			this.columnNames = columnNames;
 			this.taskBoardId = taskBoardId;
+			thisTask = task;
 
 			LoadWindowData(task, userNames, columnNames, taskBoardName, isReadOnly);
 		}
@@ -51,6 +56,7 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 			CommonMethods.Set.ReadOnly(ComboBoxTaskPriority, isReadOnly);
 			CommonMethods.Set.ReadOnly(LabelTaskCreateDateTime, true);
 			CommonMethods.Set.ReadOnly(DatePickerTaskCreateDateTime, true);
+			GridCommects.Visibility = task == null ? Visibility.Collapsed : Visibility.Visible;
 			if (task == null)
 				return;
 
@@ -63,6 +69,20 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 				ComboBoxTaskReviewer.SelectedItem = userNames.First(userName => userName.Value == task.ReviewerId.Value).Key;
 			if (task.ColumnId != null)
 				ComboBoxTaskColumn.SelectedItem = columnNames.First(columnName => columnName.Value == task.ColumnId.Value).Key;
+			UpdateListComments();
+		}
+		private void UpdateListComments() {
+			var comments = CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseCommentReader().GetFromTask(thisTask.TaskId));
+			if (comments == null)
+				return;
+
+			StackPanelComments.Children.Clear();
+			foreach (var commentControl in comments.Select(comment => new CommentControl(httpClientProvider, comment))) {
+				commentControl.AddComment += (sender, args) => UpdateListComments();
+				commentControl.EditComment += (sender, args) => UpdateListComments();
+				commentControl.DeleteComment += (sender, args) => UpdateListComments();
+				StackPanelComments.Children.Add(commentControl);
+			}
 		}
 
 		public IEnumerable<string> GetErrors() {
@@ -93,6 +113,26 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 			};
 		}
 		public void ActionBeforeFalseDialogResultClose() {
+		}
+
+		private void ButtonSendComment_OnClick(object sender, RoutedEventArgs e) {
+			if (CommonMethods.Check.FieldIsEmpty(TextBoxCommentContent)) {
+				CommonMethods.ShowMessageBox.Error("Необходимо написать комментарий");
+				return;
+			}
+
+			var userId = CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseUserReader().GetWithUsingFilters(httpClientProvider.Login))?.First()?.UserId;
+			if (userId == null)
+				return;
+
+			CommonMethods.SafeRunMethod.WithoutReturn(() => httpClientProvider.GetDatabaseCommentEditor().Add(new Comment {
+				Content = TextBoxCommentContent.Text,
+				UserId = userId.Value,
+				TaskId = thisTask.TaskId
+			}));
+
+			TextBoxCommentContent.Text = string.Empty;
+			UpdateListComments();
 		}
 
 		private void ButtonOk_OnClick(object sender, RoutedEventArgs e) {
