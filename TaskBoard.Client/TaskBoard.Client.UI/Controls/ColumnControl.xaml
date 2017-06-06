@@ -10,16 +10,16 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<Label Grid.Row="0" Name="LabelColumnHeader" MouseLeftButtonDown="ViewColumn_OnClick" HorizontalContentAlignment="Center">
-			<Label.ContextMenu>
-				<ContextMenu>
-					<MenuItem Header="Добавить задачу" Click="MenuItemAddTask_OnClick" />
-					<MenuItem Header="Добавить столбец" Click="MenuItemAddColumn_OnClick" />
-					<MenuItem Header="Редактировать столбец" Click="MenuItemEditColumn_OnClick" />
-					<MenuItem Header="Удалить столбец" Click="MenuItemDeleteColumn_OnClick" />
-				</ContextMenu>
-			</Label.ContextMenu>
-		</Label>
+		<Grid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Добавить задачу" Click="MenuItemAddTask_OnClick" />
+				<MenuItem Header="Добавить столбец" Click="MenuItemAddColumn_OnClick" />
+				<MenuItem Header="Редактировать столбец" Click="MenuItemEditColumn_OnClick" />
+				<MenuItem Header="Удалить столбец" Click="MenuItemDeleteColumn_OnClick" />
+			</ContextMenu>
+		</Grid.ContextMenu>
+
+		<Label Grid.Row="0" Name="LabelColumnHeader" MouseLeftButtonDown="ViewColumn_OnClick" HorizontalContentAlignment="Center" />
 
 		<Rectangle Grid.Row="1" Height="1" Fill="Silver" />
 

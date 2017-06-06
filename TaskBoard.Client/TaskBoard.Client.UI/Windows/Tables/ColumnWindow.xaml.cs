@@ -27,7 +27,7 @@ namespace TaskBoard.Client.UI.Windows.Tables {
 
 			TextBoxColumnHeader.Text = column.Header;
 			TextBoxColumnBrush.Text = column.Brush;
-			ComboBoxColumnBoard.SelectedItem = column.BoardId;
+			ComboBoxColumnBoard.SelectedItem = boardNames.First(boardName => boardName.Value == column.BoardId).Key;
 		}
 
 		public IEnumerable<string> GetErrors() {

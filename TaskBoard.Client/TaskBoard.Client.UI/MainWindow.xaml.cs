@@ -2,12 +2,14 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using TaskBoard.Client.UI.Controls;
 using TaskBoard.Client.UI.Windows;
 
 namespace TaskBoard.Client.UI {
 	public partial class MainWindow {
 		private readonly HttpClientProvider httpClientProvider;
 		private ClientUiConfiguration clientUiConfiguration;
+		private readonly BoardControl boardControl;
 
 		public MainWindow() {
 			InitializeComponent();
@@ -17,7 +19,11 @@ namespace TaskBoard.Client.UI {
 			LoadHttpClientProviderSettings(clientUiConfiguration);
 			CreateMenuAuthorization();
 
-			ThisBoardControl.SetHttpClientProvider(httpClientProvider);
+			boardControl = new BoardControl(httpClientProvider);
+			GridForBaord.Children.Add(boardControl);
+			boardControl.AddBoard += (sender, args) => boardControl.LoadBoard((string)(ComboBoxBoards.SelectedItem = string.Empty));
+			boardControl.EditBoard += (sender, args) => boardControl.LoadBoard((string)(ComboBoxBoards.SelectedItem = string.Empty));
+			boardControl.DeleteBoard += (sender, args) => boardControl.LoadBoard((string)(ComboBoxBoards.SelectedItem = string.Empty));
 		}
 		private void LoadHttpClientProviderSettings(ClientUiConfiguration configuration) {
 			CommonMethods.SafeRunMethod.WithoutReturn(() => {
@@ -45,7 +51,7 @@ namespace TaskBoard.Client.UI {
 					clientUiConfiguration.Password = httpClientProvider.Password;
 					clientUiConfiguration.WriteConfiguration();
 					ComboBoxBoards.SelectedItem = string.Empty;
-					ThisBoardControl.Clear();
+					boardControl.LoadBoard(string.Empty);
 					CreateMenuAuthorization();
 				};
 
@@ -79,13 +85,16 @@ namespace TaskBoard.Client.UI {
 			ComboBoxBoards.ItemsSource = new[] { string.Empty }.Concat(boardNames).ToArray();
 		}
 		private void ComboBoxBoards_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-			ThisBoardControl.Clear();
+			boardControl.LoadBoard((string)ComboBoxBoards.SelectedItem);
+		}
 
+		private void ButtonShowFullListTasks_OnClick(object sender, RoutedEventArgs e) {
 			var boardName = (string)ComboBoxBoards.SelectedItem;
 			if (string.IsNullOrEmpty(boardName))
 				return;
 
-			ThisBoardControl.LoadBoard(boardName);
+			new FullListTasksWindow(httpClientProvider, boardName).ShowDialog();
+			boardControl.LoadBoard(boardName);
 		}
 	}
 }

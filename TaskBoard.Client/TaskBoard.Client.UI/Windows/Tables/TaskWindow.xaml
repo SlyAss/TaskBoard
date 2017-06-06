@@ -1,93 +1,107 @@
 ﻿<Window x:Class="TaskBoard.Client.UI.Windows.Tables.TaskWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		Title="TaskWindow" Width="450" SizeToContent="Height">
+		Title="TaskWindow" Width="820" SizeToContent="Height">
 	<Grid Margin="5">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 
-		<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="5">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="4*" />
-					<ColumnDefinition Width="10" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="10" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="9*" />
+				<ColumnDefinition Width="10" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="10" />
+				<ColumnDefinition Width="7*" />
+			</Grid.ColumnDefinitions>
 
-				<Grid Grid.Column="0">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
+			<ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="5">
+				<Grid>
 					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="4*" />
+						<ColumnDefinition Width="10" />
 						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="10" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 
-					<Label Grid.Row="0" Grid.Column="0" Name="LabelTaskHeader" Content="Заголовок" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<TextBox Grid.Row="0" Grid.Column="1" Name="TextBoxTaskHeader" VerticalContentAlignment="Center" />
+					<Grid Grid.Column="0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
 
-					<Label Grid.Row="2" Grid.Column="0" Name="LabelTaskDescription" Content="Описание" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<TextBox Grid.Row="2" Grid.Column="1" Name="TextBoxTaskDescription" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="100" />
+						<Label Grid.Row="0" Grid.Column="0" Name="LabelTaskHeader" Content="Заголовок" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<TextBox Grid.Row="0" Grid.Column="1" Name="TextBoxTaskHeader" VerticalContentAlignment="Center" />
 
-					<Label Grid.Row="4" Grid.Column="0" Name="LabelTaskDeveloper" Content="Разработчик" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<ComboBox Grid.Row="4" Grid.Column="1" Name="ComboBoxTaskDeveloper" VerticalContentAlignment="Center" />
+						<Label Grid.Row="2" Grid.Column="0" Name="LabelTaskDescription" Content="Описание" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<TextBox Grid.Row="2" Grid.Column="1" Name="TextBoxTaskDescription" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="100" />
 
-					<Label Grid.Row="6" Grid.Column="0" Name="LabelTaskReviewer" Content="Ревьювер" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<ComboBox Grid.Row="6" Grid.Column="1" Name="ComboBoxTaskReviewer" VerticalContentAlignment="Center" />
+						<Label Grid.Row="4" Grid.Column="0" Name="LabelTaskDeveloper" Content="Разработчик" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<ComboBox Grid.Row="4" Grid.Column="1" Name="ComboBoxTaskDeveloper" VerticalContentAlignment="Center" />
 
-					<Label Grid.Row="8" Grid.Column="0" Name="LabelTaskColumn" Content="Столбец" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<ComboBox Grid.Row="8" Grid.Column="1" Name="ComboBoxTaskColumn" VerticalContentAlignment="Center" />
+						<Label Grid.Row="6" Grid.Column="0" Name="LabelTaskReviewer" Content="Ревьювер" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<ComboBox Grid.Row="6" Grid.Column="1" Name="ComboBoxTaskReviewer" VerticalContentAlignment="Center" />
 
-					<Label Grid.Row="10" Grid.Column="0" Name="LabelTaskBoard" Content="Доска" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
-					<TextBox Grid.Row="10" Grid.Column="1" Name="TextBoxTaskBoard" VerticalContentAlignment="Center" />
+						<Label Grid.Row="8" Grid.Column="0" Name="LabelTaskColumn" Content="Столбец" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<ComboBox Grid.Row="8" Grid.Column="1" Name="ComboBoxTaskColumn" VerticalContentAlignment="Center" />
+
+						<Label Grid.Row="10" Grid.Column="0" Name="LabelTaskBoard" Content="Доска" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+						<TextBox Grid.Row="10" Grid.Column="1" Name="TextBoxTaskBoard" VerticalContentAlignment="Center" />
+					</Grid>
+
+					<Rectangle Grid.Column="2" Width="1" Fill="Silver" />
+
+					<Grid Grid.Column="4">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+						</Grid.RowDefinitions>
+
+						<Label Grid.Row="0" Name="LabelTaskBranch" Content="Ветка" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+						<TextBox Grid.Row="1" Name="TextBoxTaskBranch" VerticalContentAlignment="Center" Height="26" />
+
+						<Label Grid.Row="3" Name="LabelTaskState" Content="Состояние" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+						<ComboBox Grid.Row="4" Name="ComboBoxTaskState" VerticalContentAlignment="Center" Height="26" />
+
+						<Label Grid.Row="6" Name="LabelTaskPriority" Content="Приоритет" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+						<ComboBox Grid.Row="7" Name="ComboBoxTaskPriority" VerticalContentAlignment="Center" Height="26" />
+
+						<Label Grid.Row="9" Name="LabelTaskCreateDateTime" Content="Дата создания" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+						<DatePicker Grid.Row="10" Name="DatePickerTaskCreateDateTime" VerticalContentAlignment="Center" Height="26" />
+					</Grid>
 				</Grid>
+			</ScrollViewer>
 
-				<Rectangle Grid.Column="2" Width="1" Fill="Silver" />
-
-				<Grid Grid.Column="4">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="5" />
-					</Grid.RowDefinitions>
-
-					<Label Grid.Row="0" Name="LabelTaskBranch" Content="Ветка" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-					<TextBox Grid.Row="1" Name="TextBoxTaskBranch" VerticalContentAlignment="Center" Height="26" />
-
-					<Label Grid.Row="3" Name="LabelTaskState" Content="Состояние" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-					<ComboBox Grid.Row="4" Name="ComboBoxTaskState" VerticalContentAlignment="Center" Height="26" />
-
-					<Label Grid.Row="6" Name="LabelTaskPriority" Content="Приоритет" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-					<ComboBox Grid.Row="7" Name="ComboBoxTaskPriority" VerticalContentAlignment="Center" Height="26" />
-
-					<Label Grid.Row="9" Name="LabelTaskCreateDateTime" Content="Дата создания" Foreground="DodgerBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-					<DatePicker Grid.Row="10" Name="DatePickerTaskCreateDateTime" VerticalContentAlignment="Center" Height="26" />
-				</Grid>
-			</Grid>
-		</ScrollViewer>
+			<ScrollViewer Grid.Column="4" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="5">
+				<Grid />
+			</ScrollViewer>
+		</Grid>
 
 		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
@@ -96,8 +110,8 @@
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
-			<Button Grid.Column="1" Content="Ок" Click="ButtonOk_OnClick" HorizontalAlignment="Right" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
-			<Button Grid.Column="2" Content="Отмена" Click="ButtonCancel_OnClick" HorizontalAlignment="Right" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
+			<Button Grid.Column="1" Content="Ок" Click="ButtonOk_OnClick" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
+			<Button Grid.Column="2" Content="Отмена" Click="ButtonCancel_OnClick" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
 		</Grid>
 	</Grid>
 </Window>

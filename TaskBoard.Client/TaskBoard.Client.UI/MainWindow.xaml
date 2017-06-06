@@ -6,7 +6,10 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 
 		<Grid Grid.Row="0">
@@ -32,6 +35,19 @@
 			<Menu Grid.Column="5" Name="MenuAuthorization" />
 		</Grid>
 
-		<controls:BoardControl Grid.Row="1" x:Name="ThisBoardControl" />
+		<Rectangle Grid.Row="1" Height="1" Fill="Silver" Margin="0,1,0,1" />
+
+		<Grid Grid.Row="2" Name="GridForBaord" />
+
+		<Rectangle Grid.Row="3" Height="1" Fill="Silver" Margin="0,1,0,1" />
+
+		<Grid Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Button Grid.Column="0" Content="Показать полный список задач" Click="ButtonShowFullListTasks_OnClick" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
+		</Grid>
 	</Grid>
 </Window>

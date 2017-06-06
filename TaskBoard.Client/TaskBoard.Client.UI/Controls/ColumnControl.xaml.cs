@@ -71,7 +71,7 @@ namespace TaskBoard.Client.UI.Controls {
 			return CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseUserReader().GetAll().ToDictionary(user => user.Login, user => user.UserId));
 		}
 		private Dictionary<string, Guid> GetColumnNames() {
-			return CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseColumnReader().GetAll().ToDictionary(column => column.Header, column => column.ColumnId));
+			return CommonMethods.SafeRunMethod.WithReturn(() => httpClientProvider.GetDatabaseColumnReader().GetFromBoard(thisColumn.BoardId).ToDictionary(column => column.Header, column => column.ColumnId));
 		}
 	}
 }

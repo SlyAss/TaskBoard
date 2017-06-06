@@ -69,7 +69,7 @@ namespace TaskBoard.Client.UI {
 			}
 
 			public static void ReadOnly(ComboBox comboBox, bool isReadOnly) {
-				comboBox.IsReadOnly = isReadOnly;
+				comboBox.IsEnabled = !isReadOnly;
 			}
 
 			public static void ReadOnly(CheckBox checkBox, bool isReadOnly) {

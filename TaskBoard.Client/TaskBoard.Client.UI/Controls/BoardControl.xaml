@@ -2,6 +2,15 @@
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+		<ScrollViewer.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Добавить столбец" Click="MenuItemAddColumn_OnClick" />
+				<MenuItem Header="Добавить доску" Click="MenuItemAddBoard_OnClick" />
+				<MenuItem Header="Редактировать доску" Click="MenuItemEditBoard_OnClick" />
+				<MenuItem Header="Удалить доску" Click="MenuItemDeleteBoard_OnClick" />
+			</ContextMenu>
+		</ScrollViewer.ContextMenu>
+
 		<StackPanel Name="StackPanelColumnControls" Orientation="Horizontal" />
 	</ScrollViewer>
 </UserControl>
