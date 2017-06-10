@@ -20,6 +20,8 @@
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
 			<Menu Grid.Column="0">
@@ -32,7 +34,13 @@
 			<ComboBox Grid.Column="3" Name="ComboBoxBoards" Text="qwe" VerticalContentAlignment="Center"
 					  DropDownOpened="ComboBoxBoards_OnDropDownOpened" SelectionChanged="ComboBoxBoards_OnSelectionChanged" />
 
-			<Menu Grid.Column="5" Name="MenuAuthorization" />
+			<Menu Grid.Column="5">
+				<MenuItem Header="Управление пользователями" Click="MenuItemUserControl_OnClick" VerticalContentAlignment="Center" Height="26" />
+			</Menu>
+
+			<Rectangle Grid.Column="6" Width="1" Fill="Silver" />
+
+			<Menu Grid.Column="7" Name="MenuAuthorization" />
 		</Grid>
 
 		<Rectangle Grid.Row="1" Height="1" Fill="Silver" Margin="0,1,0,1" />

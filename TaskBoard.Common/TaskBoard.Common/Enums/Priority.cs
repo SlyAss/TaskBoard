@@ -2,6 +2,11 @@
 	// ReSharper disable UnusedMember.Global
 
 	public enum Priority {
-		NoPriority
+		NoPriority,
+		Minor,
+		Normal,
+		Major,
+		Critical,
+		ShowStopped
 	}
 }

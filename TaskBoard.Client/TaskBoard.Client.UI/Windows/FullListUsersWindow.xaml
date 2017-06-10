@@ -1,0 +1,39 @@
+﻿<Window x:Class="TaskBoard.Client.UI.Windows.FullListUsersWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:tables="clr-namespace:TaskBoard.Common.Tables;assembly=TaskBoard.Common"
+		Title="FullListUsersWindow" Height="300" Width="900">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<DataGrid Grid.Row="0" Name="DataGridUsers" MouseDoubleClick="DataGridUsers_OnMouseDoubleClick" AutoGenerateColumns="False" SelectionMode="Single" CanUserReorderColumns="False" CanUserDeleteRows="False" IsReadOnly="True" CanUserAddRows="False">
+			<DataGrid.DataContext>
+				<tables:User />
+			</DataGrid.DataContext>
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Добавить" Click="MenuItemAddUsers_OnClick" />
+					<MenuItem Header="Редактировать" Click="MenuItemEditUsers_OnClick" />
+					<MenuItem Header="Удалить" Click="MenuItemDeleteUsers_OnClick" />
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Login" Binding="{Binding Path=Login}" />
+				<DataGridTextColumn Header="AccessType" Binding="{Binding Path=AccessType}" />
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<Button Grid.Column="1" Content="Ок" Click="ButtonOk_OnClick" MinWidth="80" Padding="15,5,15,5" Margin="3,3,0,0" />
+		</Grid>
+	</Grid>
+</Window>

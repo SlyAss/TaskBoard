@@ -2,6 +2,11 @@
 	// ReSharper disable UnusedMember.Global
 
 	public enum State {
-		NoState
+		NoState,
+		ToDo,
+		Rework,
+		InProgress,
+		Done,
+		Paused
 	}
 }

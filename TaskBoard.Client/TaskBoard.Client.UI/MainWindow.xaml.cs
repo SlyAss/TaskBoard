@@ -88,6 +88,13 @@ namespace TaskBoard.Client.UI {
 			boardControl.LoadBoard((string)ComboBoxBoards.SelectedItem);
 		}
 
+		private void MenuItemUserControl_OnClick(object sender, RoutedEventArgs e) {
+			CommonMethods.SafeRunMethod.WithoutReturn(() => {
+				httpClientProvider.GetDatabaseUserReaderAsAdmin().GetAll();
+				new FullListUsersWindow(httpClientProvider).ShowDialog();
+			});
+		}
+
 		private void ButtonShowFullListTasks_OnClick(object sender, RoutedEventArgs e) {
 			var boardName = (string)ComboBoxBoards.SelectedItem;
 			if (string.IsNullOrEmpty(boardName))

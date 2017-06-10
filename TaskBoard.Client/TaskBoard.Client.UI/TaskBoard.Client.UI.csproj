@@ -59,6 +59,9 @@
     <Compile Include="Windows\FullListTasksWindow.xaml.cs">
       <DependentUpon>FullListTasksWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\FullListUsersWindow.xaml.cs">
+      <DependentUpon>FullListUsersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tables\BoardWindow.xaml.cs">
       <DependentUpon>BoardWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\FullListTasksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FullListUsersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
