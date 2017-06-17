@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TaskBoard.Common.Enums;
 
 namespace TaskBoard.Server.Database.Entities {
@@ -29,21 +30,20 @@ namespace TaskBoard.Server.Database.Entities {
 		public DateTime CreateDateTime { get; set; }
 
 		public Guid? DeveloperId { get; set; }
-
+		[ForeignKey(nameof(DeveloperId))]
 		public virtual UserEntity Developer { get; set; }
 
 		public Guid? ReviewerId { get; set; }
-
+		[ForeignKey(nameof(ReviewerId))]
 		public virtual UserEntity Reviewer { get; set; }
 
 		public Guid? ColumnId { get; set; }
-
+		[ForeignKey(nameof(ColumnId))]
 		public virtual ColumnEntity Column { get; set; }
 
 		[Required]
 		public Guid BoardId { get; set; }
-
-		[Required]
+		[Required, ForeignKey(nameof(BoardId))]
 		public virtual BoardEntity Board { get; set; }
 	}
 }

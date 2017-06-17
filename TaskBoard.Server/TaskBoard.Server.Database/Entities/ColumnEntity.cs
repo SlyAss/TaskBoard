@@ -18,8 +18,7 @@ namespace TaskBoard.Server.Database.Entities {
 
 		[Required, Index("IX_ColumnUniques", 2, IsUnique = true)]
 		public Guid BoardId { get; set; }
-
-		[Required]
+		[Required, ForeignKey(nameof(BoardId))]
 		public virtual BoardEntity Board { get; set; }
 	}
 }

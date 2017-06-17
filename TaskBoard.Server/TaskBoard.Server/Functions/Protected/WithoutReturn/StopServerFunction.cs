@@ -9,7 +9,7 @@ namespace TaskBoard.Server.Functions.Protected.WithoutReturn {
 
 	public class StopServerFunction : HttpProtectedFunctionWithoutReturn {
 		public override string NameOfCalledMethod => "Stop";
-		protected override AccessType RequiredAccessType => AccessType.UserRead;
+		protected override AccessType RequiredAccessType => AccessType.AdminRead;
 
 		public StopServerFunction(IDatabaseAuthorizer databaseAuthorizer) : base(databaseAuthorizer) {
 		}
